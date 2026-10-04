@@ -12,6 +12,10 @@
 //   marker    1 if the marker was high for most of the block
 //   n         readings in the block
 
+#include <stdint.h>
+#include <Arduino.h>
+
+
 const uint8_t SHUNT_PIN = A0;
 const uint8_t MARKER_PIN = A1;
 

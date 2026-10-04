@@ -16,13 +16,13 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-static const double kTol = 1e-3;
+constexpr double kTol = 1e-3;
 
 // Envelope features whose ±2% band holds no envelope-spectrum bin (centre above the envelope
 // Nyquist, VB_FS / VB_DECIM / 2). Both implementations then read the last bin, deep in the
 // decimation filter's stopband (~1e-8 of total energy), so float32 vs float64 differ in noise.
 // Defined from the physics, before looking at errors. Index = position in the env feature vector.
-static void out_of_band(double fr, bool* oob) {
+inline void out_of_band(double fr, bool* oob) {
   const double rd = (VB_GEO_D / VB_GEO_PITCH) * cos(VB_GEO_PHI_DEG * M_PI / 180.0);
   const double bpfo = VB_GEO_N * fr / 2 * (1 - rd), bpfi = VB_GEO_N * fr / 2 * (1 + rd);
   const double ftf = fr / 2 * (1 - rd), ball = 2 * VB_GEO_PITCH * fr / (2 * VB_GEO_D) * (1 - rd * rd);
@@ -39,7 +39,7 @@ static void out_of_band(double fr, bool* oob) {
 }
 
 template <int NF, int NC>
-static bool vb_check(const char* name, const double (*gold)[NF], const int* gold_pred, bool env,
+inline bool vb_check(const char* name, const double (*gold)[NF], const int* gold_pred, bool env,
                      int (*predict)(const float*), float (*stdz)(int, float), const float (*coef)[NF],
                      double (*now_us)(), void (*say)(const char*)) {
   char line[200];
@@ -83,7 +83,7 @@ static bool vb_check(const char* name, const double (*gold)[NF], const int* gold
 
 
 // Both feature sets; returns true if both pass.
-static bool vb_check_all(double (*now_us)(), void (*say)(const char*)) {
+inline bool vb_check_all(double (*now_us)(), void (*say)(const char*)) {
   bool ok = vb_check<VB_TIME_FEATURES, VB_TIME_NC>("time_only", VB_GOLD_TIME, VB_GOLD_TIME_PRED, false,
                                                     vb_predict_time, vb_standardise_time, VB_TIME_COEF, now_us, say);
   ok &= vb_check<VB_ENV_FEATURES, VB_ENV_NC>("envelope_ratio", VB_GOLD_ENV, VB_GOLD_ENV_PRED, true,

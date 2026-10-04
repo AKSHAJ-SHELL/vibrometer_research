@@ -39,8 +39,6 @@ TEST_FILES = ["97.mat", "100.mat", "105.mat", "169.mat", "130.mat", "197.mat", "
 
 
 def c_array(name: str, arr, ctype: str = "float", per_line: int = 8) -> str:
-    flat = np.asarray(arr).ravel()
-
     def lit(v) -> str:
         if ctype.startswith(("int", "uint")):
             return str(int(v))
@@ -49,9 +47,16 @@ def c_array(name: str, arr, ctype: str = "float", per_line: int = 8) -> str:
             t += ".0"
         return t + ("f" if ctype == "float" else "")
 
-    body = ",\n  ".join(", ".join(lit(v) for v in flat[i:i + per_line]) for i in range(0, len(flat), per_line))
-    shape = "".join(f"[{d}]" for d in np.shape(arr))
-    return f"static const {ctype} {name}{shape} = {{\n  {body}\n}};\n"
+    arr = np.asarray(arr)
+
+    def rows(a) -> str:                      # nested braces per dimension (no -Wmissing-braces)
+        if a.ndim == 1:
+            flat = [lit(v) for v in a]
+            return "{" + ",\n   ".join(", ".join(flat[i:i + per_line]) for i in range(0, len(flat), per_line)) + "}"
+        return "{\n  " + ",\n  ".join(rows(x) for x in a) + "\n}"
+
+    shape = "".join(f"[{d}]" for d in arr.shape)
+    return f"static const {ctype} {name}{shape} = {rows(arr)};\n"
 
 
 def main() -> int:
