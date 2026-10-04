@@ -1,8 +1,8 @@
 # vibedge — results handoff
 
-_Generated 2026-10-04T06:20:22+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
+_Generated 2026-10-04T06:20:40+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
 
-Provenance recorded 2026-10-04T06:19:32+00:00 (written by `make reproduce` after its run) · git: not a git repository · Python 3.12.12 · data manifest sha256 `8caca47c7297dfe8…`
+Provenance recorded 2026-10-04T06:20:40+00:00 (written by `make reproduce` after its run) · git: 671f53578811ec46f2a76feb119373edc1b572bc · Python 3.12.12 · data manifest sha256 `8caca47c7297dfe8…`
 
 ## Headline — pooled macro-F1 with 95% fault-level CI
 
