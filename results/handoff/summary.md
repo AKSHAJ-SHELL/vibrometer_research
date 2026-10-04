@@ -1,6 +1,6 @@
 # vibedge — results handoff
 
-_Generated 2026-10-04T06:20:40+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
+_Generated 2026-10-04T16:41:25+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
 
 Provenance recorded 2026-10-04T06:20:40+00:00 (written by `make reproduce` after its run) · git: 671f53578811ec46f2a76feb119373edc1b572bc · Python 3.12.12 · data manifest sha256 `8caca47c7297dfe8…`
 
@@ -39,6 +39,10 @@ Measured on one 4 s window of `105.mat` at 12000 Hz; models fit on all CWRU wind
 | time_only | 17 | 68 | 106 (72 + 34) | 10320 (10286 + 34) | 1.17 ms |
 | envelope_ratio | 39 | 156 | 238 (160 + 78) | 5372 (5294 + 78) | 3.66 ms |
 | full | 40 | 160 | 244 (164 + 80) | 5380 (5300 + 80) | 4.14 ms |
+
+## On-device energy (ESP32-S3, Uno power meter)
+
+_Not measured yet — see `firmware/README.md`._ Exported model: 16384-sample windows (1.37 s); honest-split macro-F1 at this length P3 envelope 0.455 vs time 0.299.
 
 ## Figures
 

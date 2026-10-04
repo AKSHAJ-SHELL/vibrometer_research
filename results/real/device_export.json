@@ -1,0 +1,132 @@
+{
+  "window_samples": 16384,
+  "fs_hz": 12000.0,
+  "window_s": 1.3653333333333333,
+  "speed_source": "measured (RPM field)",
+  "train_windows": 360,
+  "train_recordings": 52,
+  "fault_identities": 14,
+  "test_windows": [
+    {
+      "file": "97.mat",
+      "class": "healthy"
+    },
+    {
+      "file": "100.mat",
+      "class": "healthy"
+    },
+    {
+      "file": "105.mat",
+      "class": "bearing_IR"
+    },
+    {
+      "file": "169.mat",
+      "class": "bearing_IR"
+    },
+    {
+      "file": "130.mat",
+      "class": "bearing_OR"
+    },
+    {
+      "file": "197.mat",
+      "class": "bearing_OR"
+    },
+    {
+      "file": "118.mat",
+      "class": "bearing_ball"
+    },
+    {
+      "file": "185.mat",
+      "class": "bearing_ball"
+    }
+  ],
+  "honest_split_macro_f1_at_this_window_length": {
+    "P3|time_only": 0.2993,
+    "P3|envelope_ratio": 0.4546,
+    "P4|time_only": 0.3423,
+    "P4|envelope_ratio": 0.7513
+  },
+  "device_ref_vs_pipeline_max_rel_diff": {
+    "time_only": 4.36890397617952e-15,
+    "envelope_ratio": 1.167705101421114e-10
+  },
+  "model_params": {
+    "time_only": {
+      "model": 72,
+      "preprocessing": 34,
+      "total": 106
+    },
+    "envelope_ratio": {
+      "model": 160,
+      "preprocessing": 78,
+      "total": 238
+    }
+  },
+  "feature_names": {
+    "time_only": [
+      "rms",
+      "peak",
+      "peak_to_peak",
+      "std",
+      "kurtosis",
+      "skewness",
+      "crest_factor",
+      "shape_factor",
+      "impulse_factor",
+      "clearance_factor",
+      "spectral_centroid",
+      "spectral_entropy",
+      "spectral_flatness",
+      "spectral_rolloff",
+      "band_energy_1_2k",
+      "band_energy_2_4k",
+      "band_energy_4_6k"
+    ],
+    "envelope_ratio": [
+      "rms",
+      "peak",
+      "peak_to_peak",
+      "std",
+      "kurtosis",
+      "skewness",
+      "crest_factor",
+      "shape_factor",
+      "impulse_factor",
+      "clearance_factor",
+      "order_0.5x",
+      "order_1x",
+      "order_2x",
+      "order_3x",
+      "order_4x",
+      "order_5x",
+      "env_BPFO_h1",
+      "env_BPFO_h2",
+      "env_BPFO_h3",
+      "env_BPFI_h1",
+      "env_BPFI_h2",
+      "env_BPFI_h3",
+      "env_2xBSF_h1",
+      "env_2xBSF_h2",
+      "env_2xBSF_h3",
+      "env_FTF_h1",
+      "env_FTF_h2",
+      "env_FTF_h3",
+      "env_BPFI_sideband_fr",
+      "env_2xBSF_sideband_FTF",
+      "env_BPFO_sideband_fr",
+      "env_BPFI_h2_sideband_fr",
+      "spectral_centroid",
+      "spectral_entropy",
+      "spectral_flatness",
+      "spectral_rolloff",
+      "band_energy_1_2k",
+      "band_energy_2_4k",
+      "band_energy_4_6k"
+    ]
+  },
+  "golden_pred_matches_true": {
+    "time_only": 8,
+    "envelope_ratio": 8
+  },
+  "note": "Deployed models are trained on ALL CWRU windows (incl. the 8 test windows), so test-window predictions check the port, not accuracy. Accuracy is the honest-split entry above."
+}

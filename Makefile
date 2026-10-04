@@ -1,4 +1,4 @@
-.PHONY: setup reproduce handoff check test test-draft data experiment-cwru real figures-real features experiment figures all clean
+.PHONY: setup reproduce handoff check device-export device-check device-energy test test-draft data experiment-cwru real figures-real features experiment figures all clean
 
 PYTHON ?= python3
 export PYTHONPATH := src:$(PYTHONPATH)
@@ -27,6 +27,18 @@ reproduce:
 
 handoff:
 	$(PYTHON) scripts/make_handoff.py
+
+# on-device energy (firmware/README.md)
+device-export:
+	$(PYTHON) scripts/export_device.py
+
+device-check:
+	clang++ -O2 -std=c++17 -Wall -Wno-missing-braces -Ifirmware/vibedge_esp32s3 \
+		firmware/host_check/host_check.cpp firmware/vibedge_esp32s3/vibedge_dsp.cpp -o firmware/host_check/host_check
+	firmware/host_check/host_check
+
+device-energy:
+	$(PYTHON) scripts/device_energy.py
 
 figures-real:
 	$(PYTHON) scripts/make_real_figures.py

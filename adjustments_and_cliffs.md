@@ -62,6 +62,11 @@ These change the paper's numbers.
 - **`windowing.py`**: cuts recordings into windows that remember their source recording.
 - **`real_experiments.py`, `scripts/run_real.py`**: C1 on CWRU and Paderborn, MaFaulDa held-out severity, cross-dataset transfer, and the deployment view. Features are extracted once per dataset and cached in `results/cache/`. Splits are frozen to `configs/frozen/<dataset>/`.
 - **`figures_real.py`, `scripts/make_real_figures.py`**: the figures in `figures/real/`.
+- **On-device energy** (`firmware/`, see its README):
+  - an ESP32-S3 port of the pipeline (`vibedge_dsp.cpp`, mirroring `src/vibedge/device_ref.py`);
+  - a parity check run on the host (`make device-check`) and on the device at boot;
+  - an Arduino Uno power-meter sketch;
+  - `scripts/power_capture.py` and `scripts/device_energy.py`, which write `results/real/device_energy.json`.
 - **GBDT (tier 2)**: `run_real.py --only gbdt` writes `c1_{cwru,paderborn}_gbdt.json` and the figure `C1_ladder_real_gbdt.png`. It uses 100 trees, depth 4, learning rate 0.1.
 - **CWRU healthy-excluded score**: P3/P4 pooled rows in `c1_cwru.json` and `c1_cwru_gbdt.json` also carry `macro_f1_excl_healthy` (IR/OR/ball) with its own fault-level `ci95`. The reason is in DESIGN.md.
 - **`make reproduce`**: re-extracts every feature table (`--refresh`), reruns everything, redraws, and writes `results/real/provenance.json`: git (null here, since this is not a git repo), Python and package versions, the sha256 of `data/sha256sums.txt`, and a timestamp.
@@ -125,6 +130,25 @@ These change the paper's numbers.
 - **C19. Transfer uses 3 classes** (healthy, IR, OR), because Paderborn and MFPT have no ball faults.
 - **C20. Transfer windows are 2 s**, set by MFPT's 3 s recordings. That gives 0.5 Hz envelope resolution instead of 0.25 Hz.
 - **C21. MFPT is a third-party Kaggle mirror** (`emperorpein/mfpt-fault-datasets`). `mfpt.org` is dead.
+
+### On-device port (2026-10-04)
+
+- **C25. Two envelope features are empty at 12 kHz.** With decimation 16, the envelope spectrum stops at
+  375 Hz. At ~30 Hz shaft speed, BPFI h3 (~486 Hz) and 2×BSF h3 (~423 Hz) lie above that limit. Both the
+  pipeline and the device then read the last bin, which is decimation-filter stopband residue (~1e-8 of total
+  energy). So on CWRU at 12 kHz these two features carry no fault information. In the deployment view
+  (26.7 kSPS, envelope limit 834 Hz) they are in band. This is where the device port's only float32 vs float64
+  disagreement comes from (worst 1.5e-2 standardised); in-band features agree to 3.9e-4, and all predictions
+  are identical.
+- **C26. The device model differs slightly from the paper's.** It uses 16,384-sample windows (1.37 s, a power of
+  two for the device FFT) instead of 4 s. Honest-split macro-F1 at that length: P3 envelope 0.455 vs time 0.299,
+  close to the paper's 0.457 / 0.298 (`results/real/device_export.json`). It is trained on all CWRU windows,
+  so the 8 test windows check the port, not accuracy.
+- **C27. On-device energy is board-level and scale-uncertain.** It is measured with an Arduino Uno through a 1 Ω
+  low-side shunt. The absolute scale depends on the Uno's 1.1 V reference (±10% unless measured at AREF); the
+  envelope/time energy ratio does not. It excludes sensor acquisition, speed estimation and radio. The analysis
+  script (`scripts/device_energy.py`) was checked on a simulated capture with known answers: it recovered
+  8.0 / 36.0 mJ and 250 mW idle to within 0.1%.
 
 ### Spec wording to correct
 
