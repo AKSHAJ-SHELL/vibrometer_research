@@ -1,0 +1,97 @@
+{
+  "dataset": "mafaulda",
+  "classes": [
+    "healthy",
+    "imbalance"
+  ],
+  "designs": {
+    "interp": {
+      "train_severities_g": [
+        6.0,
+        10.0,
+        20.0,
+        30.0,
+        35.0
+      ],
+      "test_severities_g": [
+        15.0,
+        25.0
+      ],
+      "n_train": 263,
+      "n_test": 119,
+      "by_set": {
+        "time_only": {
+          "macro_f1": 0.9507857733664186,
+          "accuracy": 0.9663865546218487,
+          "majority_baseline_f1": 0.4439252336448598,
+          "per_class_f1": {
+            "healthy": 0.9230769230769231,
+            "imbalance": 0.978494623655914
+          }
+        },
+        "envelope_ratio": {
+          "macro_f1": 0.9217105263157894,
+          "accuracy": 0.9495798319327731,
+          "majority_baseline_f1": 0.4439252336448598,
+          "per_class_f1": {
+            "healthy": 0.875,
+            "imbalance": 0.968421052631579
+          }
+        },
+        "full": {
+          "macro_f1": 0.9461050724637681,
+          "accuracy": 0.9663865546218487,
+          "majority_baseline_f1": 0.4439252336448598,
+          "per_class_f1": {
+            "healthy": 0.9130434782608695,
+            "imbalance": 0.9791666666666666
+          }
+        }
+      }
+    },
+    "extrap": {
+      "train_severities_g": [
+        6.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0
+      ],
+      "test_severities_g": [
+        35.0
+      ],
+      "n_train": 313,
+      "n_test": 69,
+      "by_set": {
+        "time_only": {
+          "macro_f1": 1.0,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.39473684210526316,
+          "per_class_f1": {
+            "healthy": 1.0,
+            "imbalance": 1.0
+          }
+        },
+        "envelope_ratio": {
+          "macro_f1": 0.9505376344086022,
+          "accuracy": 0.9565217391304348,
+          "majority_baseline_f1": 0.39473684210526316,
+          "per_class_f1": {
+            "healthy": 0.9333333333333333,
+            "imbalance": 0.967741935483871
+          }
+        },
+        "full": {
+          "macro_f1": 0.9505376344086022,
+          "accuracy": 0.9565217391304348,
+          "majority_baseline_f1": 0.39473684210526316,
+          "per_class_f1": {
+            "healthy": 0.9333333333333333,
+            "imbalance": 0.967741935483871
+          }
+        }
+      }
+    }
+  }
+}

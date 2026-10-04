@@ -1,0 +1,3 @@
+# Frozen split manifests (pre-registration).
+# Experiment runner writes JSON manifests here on first run.
+# With require_frozen_for_test: true, scoring refuses unfrozen hashes.

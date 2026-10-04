@@ -1,0 +1,70 @@
+# vibedge default experiment config (v2)
+
+sampling:
+  target_fs: 26700          # IIS3DWB ODR
+  fast_n: 4096              # ~0.153 s @ 26.7 kSPS
+  slow_seconds: 4.0         # envelope accumulation
+  envelope_fs: 1668.75      # ~26.7k / 16
+  resonance_band: [2000.0, 5000.0]
+  fault_band_tol: 0.02      # ±2% around kinematic freqs
+
+deployment_view:
+  lpf_hz: 6000.0
+  target_fs: 26700.0
+  noise_density_ug_per_sqrt_hz: 75.0  # IIS3DWB
+
+speed:
+  search_hz: [10.0, 60.0]
+  n_harmonics: 5
+  confidence_threshold: 0.35
+
+features:
+  groups:
+    - time_domain      # speed-free
+    - broadband        # speed-free
+    - iso_severity
+    - order_domain     # needs f_r
+    - envelope_bands   # needs f_r
+    - sidebands        # needs f_r
+
+taxonomy:
+  classes:
+    - healthy
+    - imbalance
+    - misalignment
+    - bearing_IR
+    - bearing_OR
+    - bearing_ball
+
+splits:
+  protocols: [0, 1, 2, 3, 4, 5]
+  freeze_dir: configs/frozen
+  require_frozen_for_test: true
+  window_overlap: 0.0
+
+models:
+  tiers: [majority, logreg, gbdt]
+  gbdt:
+    max_depth: 4
+    n_estimators: 100
+    random_state: 0
+
+evaluate:
+  metrics: [macro_f1, accuracy, pr_auc, roc_auc]
+  bootstrap_n: 1000
+  bootstrap_level: fault
+  n_seeds: 5
+
+paths:
+  data_root: data
+  results_root: results
+  figures_root: figures
+
+experiment:
+  # C1: feature set × protocol matrix (core hypothesis)
+  feature_sets:
+    time_only: [time_domain, broadband]
+    envelope_ratio: [time_domain, broadband, envelope_bands, sidebands, order_domain]
+    full: [time_domain, broadband, iso_severity, order_domain, envelope_bands, sidebands]
+  primary_dataset: synthetic
+  cross_datasets: [cwru, mfpt, paderborn]

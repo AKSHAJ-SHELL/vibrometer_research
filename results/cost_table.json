@@ -1,0 +1,75 @@
+[
+  {
+    "feature_set": "time_only",
+    "groups": [
+      "time_domain",
+      "broadband"
+    ],
+    "n_features": 17,
+    "feature_bytes_float32": 68,
+    "extract_s_per_window": 0.0014892088947817683,
+    "window_s": 2.0,
+    "timing_note": "host CPU, median of repeats; relative only",
+    "params_logreg": {
+      "model": 108,
+      "preprocessing": 34,
+      "total": 142
+    },
+    "params_gbdt": {
+      "model": 5109,
+      "preprocessing": 34,
+      "total": 5143
+    }
+  },
+  {
+    "feature_set": "envelope_ratio",
+    "groups": [
+      "time_domain",
+      "broadband",
+      "envelope_bands",
+      "sidebands",
+      "order_domain"
+    ],
+    "n_features": 39,
+    "feature_bytes_float32": 156,
+    "extract_s_per_window": 0.005236083990894258,
+    "window_s": 2.0,
+    "timing_note": "host CPU, median of repeats; relative only",
+    "params_logreg": {
+      "model": 240,
+      "preprocessing": 78,
+      "total": 318
+    },
+    "params_gbdt": {
+      "model": 2412,
+      "preprocessing": 78,
+      "total": 2490
+    }
+  },
+  {
+    "feature_set": "full",
+    "groups": [
+      "time_domain",
+      "broadband",
+      "iso_severity",
+      "order_domain",
+      "envelope_bands",
+      "sidebands"
+    ],
+    "n_features": 40,
+    "feature_bytes_float32": 160,
+    "extract_s_per_window": 0.006246750010177493,
+    "window_s": 2.0,
+    "timing_note": "host CPU, median of repeats; relative only",
+    "params_logreg": {
+      "model": 246,
+      "preprocessing": 80,
+      "total": 326
+    },
+    "params_gbdt": {
+      "model": 2412,
+      "preprocessing": 80,
+      "total": 2492
+    }
+  }
+]

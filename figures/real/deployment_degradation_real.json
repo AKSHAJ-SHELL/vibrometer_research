@@ -1,0 +1,30 @@
+{
+  "cwru": {
+    "time_only": {
+      "pristine": 0.29785664054651395,
+      "deployment": 0.30717798223350257
+    },
+    "envelope_ratio": {
+      "pristine": 0.45703838949180564,
+      "deployment": 0.45594304341429803
+    },
+    "full": {
+      "pristine": 0.4647115971247526,
+      "deployment": 0.47235054721443104
+    }
+  },
+  "paderborn": {
+    "time_only": {
+      "pristine": 0.5064878470272052,
+      "deployment": 0.41837791866546653
+    },
+    "envelope_ratio": {
+      "pristine": 0.7451223825873834,
+      "deployment": 0.7559448959933744
+    },
+    "full": {
+      "pristine": 0.7460064220824485,
+      "deployment": 0.7553015955105318
+    }
+  }
+}

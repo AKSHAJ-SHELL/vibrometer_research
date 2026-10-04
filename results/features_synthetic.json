@@ -1,0 +1,15 @@
+{
+  "dataset": "synthetic",
+  "feature_set": "full",
+  "groups": [
+    "time_domain",
+    "broadband",
+    "iso_severity",
+    "order_domain",
+    "envelope_bands",
+    "sidebands"
+  ],
+  "n": 24,
+  "n_features": 40,
+  "deployment_view": false
+}

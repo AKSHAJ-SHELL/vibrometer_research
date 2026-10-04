@@ -1,0 +1,4669 @@
+{
+  "protocol": 3,
+  "cwru": {
+    "pristine": {
+      "dataset": "cwru",
+      "model": "logreg",
+      "settings": {
+        "window_s": 4.0,
+        "overlap": 0.5,
+        "max_windows": null,
+        "slow_seconds": 4.0,
+        "deployment": false,
+        "speed": "oracle",
+        "n_recordings": 52
+      },
+      "n_windows": 205,
+      "n_recordings": 52,
+      "n_fault_identities": 14,
+      "labels": [
+        "healthy",
+        "bearing_IR",
+        "bearing_OR",
+        "bearing_ball"
+      ],
+      "n_folds": {
+        "3": 14
+      },
+      "skipped_protocols": {},
+      "headline": "rows with fold == 'pooled'",
+      "speed_mode": "oracle",
+      "notes": [
+        "Train-majority baseline under leave-one-group-out on balanced classes: holding out a group makes its class the training minority, so the baseline is wrong on every fold and its pooled macro-F1 is 0. This is expected behaviour, not a bug.",
+        "ci95: fault-level bootstrap (1000 draws), not computed for P0 (random windows)."
+      ],
+      "rows": [
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.9375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0625,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.014_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 8,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 5,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_healthy",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 14,
+          "n_test": 205,
+          "macro_f1": 0.29785664054651395,
+          "accuracy": 0.44878048780487806,
+          "majority_baseline_f1": 0.16828478964401294,
+          "majority_baseline_acc": 0.5073170731707317,
+          "per_class_f1": {
+            "healthy": 0.0,
+            "bearing_IR": 0.05063291139240506,
+            "bearing_OR": 0.49,
+            "bearing_ball": 0.6507936507936508
+          },
+          "confusion": [
+            [
+              0,
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              2,
+              41,
+              5
+            ],
+            [
+              0,
+              23,
+              49,
+              32
+            ],
+            [
+              0,
+              6,
+              1,
+              41
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR",
+            "bearing_ball"
+          ],
+          "ci95": {
+            "point": 0.29785664054651395,
+            "mean": 0.32196555769347185,
+            "low": 0.1454482642156963,
+            "high": 0.5328416263169405,
+            "n_boot": 1000,
+            "n_faults": 14,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.8125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.4375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.014_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 8,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 5,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_healthy",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 14,
+          "n_test": 205,
+          "macro_f1": 0.45703838949180564,
+          "accuracy": 0.6195121951219512,
+          "majority_baseline_f1": 0.16828478964401294,
+          "majority_baseline_acc": 0.5073170731707317,
+          "per_class_f1": {
+            "healthy": 0.0,
+            "bearing_IR": 0.717391304347826,
+            "bearing_OR": 0.7346938775510204,
+            "bearing_ball": 0.37606837606837606
+          },
+          "confusion": [
+            [
+              0,
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              33,
+              0,
+              15
+            ],
+            [
+              0,
+              0,
+              72,
+              32
+            ],
+            [
+              0,
+              11,
+              15,
+              22
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR",
+            "bearing_ball"
+          ],
+          "ci95": {
+            "point": 0.45703838949180564,
+            "mean": 0.4841140985837028,
+            "low": 0.2453670464101229,
+            "high": 0.7470043116019444,
+            "n_boot": 1000,
+            "n_faults": 14,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          },
+          "diff_vs_time_only_ci95": {
+            "point": 0.1591817489452917,
+            "low": -0.058025257845191004,
+            "high": 0.40464515934505413,
+            "p_le_0": 0.088,
+            "n_boot": 1000
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.8125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.4375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.014_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.3125,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 8,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 5,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_healthy",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 14,
+          "n_test": 205,
+          "macro_f1": 0.4647115971247526,
+          "accuracy": 0.6390243902439025,
+          "majority_baseline_f1": 0.16828478964401294,
+          "majority_baseline_acc": 0.5073170731707317,
+          "per_class_f1": {
+            "healthy": 0.0,
+            "bearing_IR": 0.7032967032967034,
+            "bearing_OR": 0.7661691542288557,
+            "bearing_ball": 0.3893805309734513
+          },
+          "confusion": [
+            [
+              0,
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              32,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              77,
+              27
+            ],
+            [
+              0,
+              11,
+              15,
+              22
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR",
+            "bearing_ball"
+          ],
+          "ci95": {
+            "point": 0.4647115971247526,
+            "mean": 0.49183736951098594,
+            "low": 0.23267849915080788,
+            "high": 0.7701516485969552,
+            "n_boot": 1000,
+            "n_faults": 14,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        }
+      ]
+    },
+    "deployment": {
+      "dataset": "cwru",
+      "model": "logreg",
+      "settings": {
+        "window_s": 4.0,
+        "overlap": 0.5,
+        "max_windows": null,
+        "slow_seconds": 4.0,
+        "deployment": true,
+        "speed": "oracle",
+        "n_recordings": 52
+      },
+      "n_windows": 205,
+      "n_recordings": 52,
+      "n_fault_identities": 14,
+      "labels": [
+        "healthy",
+        "bearing_IR",
+        "bearing_OR",
+        "bearing_ball"
+      ],
+      "n_folds": {
+        "3": 14
+      },
+      "skipped_protocols": {},
+      "headline": "rows with fold == 'pooled'",
+      "speed_mode": "oracle",
+      "notes": [
+        "Train-majority baseline under leave-one-group-out on balanced classes: holding out a group makes its class the training minority, so the baseline is wrong on every fold and its pooled macro-F1 is 0. This is expected behaviour, not a bug.",
+        "ci95: fault-level bootstrap (1000 draws), not computed for P0 (random windows)."
+      ],
+      "rows": [
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.1875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0625,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.014_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 8,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 5,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_healthy",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 14,
+          "n_test": 205,
+          "macro_f1": 0.30717798223350257,
+          "accuracy": 0.4585365853658537,
+          "majority_baseline_f1": 0.16828478964401294,
+          "majority_baseline_acc": 0.5073170731707317,
+          "per_class_f1": {
+            "healthy": 0.0,
+            "bearing_IR": 0.075,
+            "bearing_OR": 0.49746192893401014,
+            "bearing_ball": 0.65625
+          },
+          "confusion": [
+            [
+              0,
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              3,
+              39,
+              6
+            ],
+            [
+              0,
+              23,
+              49,
+              32
+            ],
+            [
+              0,
+              6,
+              0,
+              42
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR",
+            "bearing_ball"
+          ],
+          "ci95": {
+            "point": 0.30717798223350257,
+            "mean": 0.3313188419403837,
+            "low": 0.1501360700370298,
+            "high": 0.5444947282624419,
+            "n_boot": 1000,
+            "n_faults": 14,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.6875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.014_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 8,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 5,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_healthy",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 14,
+          "n_test": 205,
+          "macro_f1": 0.45594304341429803,
+          "accuracy": 0.6146341463414634,
+          "majority_baseline_f1": 0.16828478964401294,
+          "majority_baseline_acc": 0.5073170731707317,
+          "per_class_f1": {
+            "healthy": 0.0,
+            "bearing_IR": 0.7272727272727273,
+            "bearing_OR": 0.7236180904522613,
+            "bearing_ball": 0.3728813559322034
+          },
+          "confusion": [
+            [
+              0,
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              32,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              72,
+              32
+            ],
+            [
+              0,
+              8,
+              18,
+              22
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR",
+            "bearing_ball"
+          ],
+          "ci95": {
+            "point": 0.45594304341429803,
+            "mean": 0.4798130970105682,
+            "low": 0.22469175403093394,
+            "high": 0.752531016899406,
+            "n_boot": 1000,
+            "n_faults": 14,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          },
+          "diff_vs_time_only_ci95": {
+            "point": 0.14876506118079547,
+            "low": -0.07522868341376554,
+            "high": 0.38017698703328934,
+            "p_le_0": 0.114,
+            "n_boot": 1000
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.6875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_B_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.007",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.014",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_IR_0.021",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.007_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.014_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@12",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 16,
+          "macro_f1": null,
+          "accuracy": 0.3125,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@3",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 8,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.25,
+          "majority_baseline_acc": 1.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_OR_0.021_@6",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 5,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "cwru_healthy",
+            "n_faults": 14
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 14,
+          "n_test": 205,
+          "macro_f1": 0.47235054721443104,
+          "accuracy": 0.6439024390243903,
+          "majority_baseline_f1": 0.16828478964401294,
+          "majority_baseline_acc": 0.5073170731707317,
+          "per_class_f1": {
+            "healthy": 0.0,
+            "bearing_IR": 0.7272727272727273,
+            "bearing_OR": 0.7586206896551724,
+            "bearing_ball": 0.40350877192982454
+          },
+          "confusion": [
+            [
+              0,
+              0,
+              5,
+              0
+            ],
+            [
+              0,
+              32,
+              0,
+              16
+            ],
+            [
+              0,
+              0,
+              77,
+              27
+            ],
+            [
+              0,
+              8,
+              17,
+              23
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR",
+            "bearing_ball"
+          ],
+          "ci95": {
+            "point": 0.47235054721443104,
+            "mean": 0.4993089196792064,
+            "low": 0.24646603498753789,
+            "high": 0.7650231461186796,
+            "n_boot": 1000,
+            "n_faults": 14,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        }
+      ]
+    }
+  },
+  "paderborn": {
+    "pristine": {
+      "dataset": "paderborn",
+      "model": "logreg",
+      "settings": {
+        "window_s": 3.9,
+        "overlap": 0.0,
+        "max_windows": 1,
+        "slow_seconds": 3.9,
+        "deployment": false,
+        "speed": "oracle",
+        "n_recordings": 2560
+      },
+      "n_windows": 2319,
+      "n_recordings": 2319,
+      "n_fault_identities": 29,
+      "labels": [
+        "healthy",
+        "bearing_IR",
+        "bearing_OR"
+      ],
+      "n_folds": {
+        "3": 29
+      },
+      "skipped_protocols": {},
+      "headline": "rows with fold == 'pooled'",
+      "speed_mode": "oracle",
+      "notes": [
+        "Train-majority baseline under leave-one-group-out on balanced classes: holding out a group makes its class the training minority, so the baseline is wrong on every fold and its pooled macro-F1 is 0. This is expected behaviour, not a bug.",
+        "ci95: fault-level bootstrap (1000 draws), not computed for P0 (random windows)."
+      ],
+      "rows": [
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K001",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K002",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K003",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K004",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.325,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K005",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K006",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.3375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.5125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.725,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.575,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA06",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.325,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 79,
+          "macro_f1": null,
+          "accuracy": 0.46835443037974683,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.075,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA09",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 14,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA15",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 15,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.4625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 16,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.1375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA22",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 17,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA30",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 18,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.7375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 19,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.325,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 20,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.3625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 21,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.2375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 22,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.95,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 23,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 24,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI14",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 25,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.7,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 26,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI17",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 27,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI18",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 28,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI21",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 29,
+          "n_test": 2319,
+          "macro_f1": 0.5064878470272052,
+          "accuracy": 0.49159120310478654,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "per_class_f1": {
+            "healthy": 0.6107899807321773,
+            "bearing_IR": 0.5084388185654009,
+            "bearing_OR": 0.40023474178403756
+          },
+          "confusion": [
+            [
+              317,
+              89,
+              74
+            ],
+            [
+              68,
+              482,
+              330
+            ],
+            [
+              173,
+              445,
+              341
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR"
+          ],
+          "ci95": {
+            "point": 0.5064878470272052,
+            "mean": 0.4949461225472242,
+            "low": 0.3744373649420375,
+            "high": 0.6126816963608307,
+            "n_boot": 1000,
+            "n_faults": 29,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K001",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K002",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K003",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K004",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K005",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K006",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.75,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA06",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 79,
+          "macro_f1": null,
+          "accuracy": 0.7468354430379747,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.75,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA09",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 14,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.675,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA15",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 15,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 16,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.2125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA22",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 17,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.2125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA30",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 18,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 19,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 20,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 21,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.45,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 22,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 23,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 24,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.8375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI14",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 25,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.775,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 26,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI17",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 27,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI18",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 28,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI21",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 29,
+          "n_test": 2319,
+          "macro_f1": 0.7451223825873834,
+          "accuracy": 0.764984907287624,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "per_class_f1": {
+            "healthy": 0.6411075612353567,
+            "bearing_IR": 0.8174692049272116,
+            "bearing_OR": 0.7767903815995818
+          },
+          "confusion": [
+            [
+              301,
+              68,
+              111
+            ],
+            [
+              50,
+              730,
+              100
+            ],
+            [
+              108,
+              108,
+              743
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR"
+          ],
+          "ci95": {
+            "point": 0.7451223825873834,
+            "mean": 0.7339882671733757,
+            "low": 0.5827563111841892,
+            "high": 0.8591452819734013,
+            "n_boot": 1000,
+            "n_faults": 29,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          },
+          "diff_vs_time_only_ci95": {
+            "point": 0.23863453556017822,
+            "low": 0.15087627171486365,
+            "high": 0.32542805571751443,
+            "p_le_0": 0.0,
+            "n_boot": 1000
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K001",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K002",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K003",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.7625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K004",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.025,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K005",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K006",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.775,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA06",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 79,
+          "macro_f1": null,
+          "accuracy": 0.7468354430379747,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.75,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA09",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 14,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.475,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA15",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 15,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 16,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.225,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA22",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 17,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.2,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA30",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 18,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 19,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.8875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 20,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 21,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.4625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 22,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.8875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 23,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 24,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.8625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI14",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 25,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.8375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 26,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI17",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 27,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI18",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 28,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.675,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI21",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 29,
+          "n_test": 2319,
+          "macro_f1": 0.7460064220824485,
+          "accuracy": 0.7645536869340233,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "per_class_f1": {
+            "healthy": 0.6489925768822906,
+            "bearing_IR": 0.8163716814159292,
+            "bearing_OR": 0.7726550079491256
+          },
+          "confusion": [
+            [
+              306,
+              67,
+              107
+            ],
+            [
+              50,
+              738,
+              92
+            ],
+            [
+              107,
+              123,
+              729
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR"
+          ],
+          "ci95": {
+            "point": 0.7460064220824485,
+            "mean": 0.7347487266379719,
+            "low": 0.5820793705885364,
+            "high": 0.8575024200454433,
+            "n_boot": 1000,
+            "n_faults": 29,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        }
+      ]
+    },
+    "deployment": {
+      "dataset": "paderborn",
+      "model": "logreg",
+      "settings": {
+        "window_s": 3.9,
+        "overlap": 0.0,
+        "max_windows": 1,
+        "slow_seconds": 3.9,
+        "deployment": true,
+        "speed": "oracle",
+        "n_recordings": 2560
+      },
+      "n_windows": 2319,
+      "n_recordings": 2319,
+      "n_fault_identities": 29,
+      "labels": [
+        "healthy",
+        "bearing_IR",
+        "bearing_OR"
+      ],
+      "n_folds": {
+        "3": 29
+      },
+      "skipped_protocols": {},
+      "headline": "rows with fold == 'pooled'",
+      "speed_mode": "oracle",
+      "notes": [
+        "Train-majority baseline under leave-one-group-out on balanced classes: holding out a group makes its class the training minority, so the baseline is wrong on every fold and its pooled macro-F1 is 0. This is expected behaviour, not a bug.",
+        "ci95: fault-level bootstrap (1000 draws), not computed for P0 (random windows)."
+      ],
+      "rows": [
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.7,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K001",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K002",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K003",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.4125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K004",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.2375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K005",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K006",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.5,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.525,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.75,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.3875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.075,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA06",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.1125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 79,
+          "macro_f1": null,
+          "accuracy": 0.26582278481012656,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.475,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA09",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 14,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA15",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 15,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 16,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.05,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA22",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 17,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.1125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA30",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 18,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.2375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 19,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.1,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 20,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.675,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 21,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.05,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 22,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.3625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 23,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.5875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 24,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI14",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 25,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 26,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.475,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI17",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 27,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.925,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI18",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": 28,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI21",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "time_only",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 29,
+          "n_test": 2319,
+          "macro_f1": 0.41837791866546653,
+          "accuracy": 0.41440275981026303,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "per_class_f1": {
+            "healthy": 0.4507989907485282,
+            "bearing_IR": 0.41775147928994083,
+            "bearing_OR": 0.3865832859579306
+          },
+          "confusion": [
+            [
+              268,
+              96,
+              116
+            ],
+            [
+              183,
+              353,
+              344
+            ],
+            [
+              258,
+              361,
+              340
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR"
+          ],
+          "ci95": {
+            "point": 0.41837791866546653,
+            "mean": 0.4063256313244617,
+            "low": 0.28340040251410703,
+            "high": 0.5498659796868048,
+            "n_boot": 1000,
+            "n_faults": 29,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K001",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.1125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K002",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K003",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K004",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.0875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K005",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K006",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.75,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA06",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 79,
+          "macro_f1": null,
+          "accuracy": 0.7468354430379747,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.7875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA09",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 14,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.85,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA15",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 15,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 16,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.4625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA22",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 17,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.3125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA30",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 18,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 19,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 20,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 21,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.4125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 22,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 23,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.6375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 24,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI14",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 25,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.175,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 26,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI17",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 27,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI18",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": 28,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.45,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI21",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "envelope_ratio",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 29,
+          "n_test": 2319,
+          "macro_f1": 0.7559448959933744,
+          "accuracy": 0.7684346701164295,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "per_class_f1": {
+            "healthy": 0.6940928270042194,
+            "bearing_IR": 0.7773892773892774,
+            "bearing_OR": 0.7963525835866262
+          },
+          "confusion": [
+            [
+              329,
+              77,
+              74
+            ],
+            [
+              58,
+              667,
+              155
+            ],
+            [
+              81,
+              92,
+              786
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR"
+          ],
+          "ci95": {
+            "point": 0.7559448959933744,
+            "mean": 0.7448015653155778,
+            "low": 0.5981675384105658,
+            "high": 0.8595387704870239,
+            "n_boot": 1000,
+            "n_faults": 29,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          },
+          "diff_vs_time_only_ci95": {
+            "point": 0.3375669773279079,
+            "low": 0.20612363506286122,
+            "high": 0.46837938530496037,
+            "p_le_0": 0.0,
+            "n_boot": 1000
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 0,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.9625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K001",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 1,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.075,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K002",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 2,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K003",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 3,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K004",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 4,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.075,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K005",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 5,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_K006",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 6,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 7,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 8,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.75,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 9,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 10,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA06",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 11,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.975,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 12,
+          "n_test": 79,
+          "macro_f1": null,
+          "accuracy": 0.7468354430379747,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 13,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.775,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA09",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 14,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.8625,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA15",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 15,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 16,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.425,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA22",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 17,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.3125,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KA30",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 18,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI01",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 19,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI03",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 20,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI04",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 21,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.325,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI05",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 22,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI07",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 23,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.675,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI08",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 24,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.925,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI14",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 25,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.2375,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI16",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 26,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI17",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 27,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 1.0,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI18",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": 28,
+          "n_test": 80,
+          "macro_f1": null,
+          "accuracy": 0.4875,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "macro_f1_note": "undefined: <2 test samples or <2 classes; see pooled row",
+          "meta": {
+            "held_fault": "paderborn_KI21",
+            "n_faults": 29
+          }
+        },
+        {
+          "feature_set": "full",
+          "protocol": 3,
+          "fold": "pooled",
+          "n_folds": 29,
+          "n_test": 2319,
+          "macro_f1": 0.7553015955105318,
+          "accuracy": 0.7684346701164295,
+          "majority_baseline_f1": 0.0,
+          "majority_baseline_acc": 0.0,
+          "per_class_f1": {
+            "healthy": 0.689873417721519,
+            "bearing_IR": 0.7786790266512167,
+            "bearing_OR": 0.7973523421588594
+          },
+          "confusion": [
+            [
+              327,
+              75,
+              78
+            ],
+            [
+              64,
+              672,
+              144
+            ],
+            [
+              77,
+              99,
+              783
+            ]
+          ],
+          "labels": [
+            "healthy",
+            "bearing_IR",
+            "bearing_OR"
+          ],
+          "ci95": {
+            "point": 0.7553015955105318,
+            "mean": 0.7439732592161196,
+            "low": 0.5922912497800042,
+            "high": 0.86024447827534,
+            "n_boot": 1000,
+            "n_faults": 29,
+            "note": "fault-level bootstrap; few faults \u2192 wide intervals"
+          }
+        }
+      ]
+    }
+  }
+}

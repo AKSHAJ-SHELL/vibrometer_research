@@ -1,0 +1,99 @@
+{
+  "protocol": 4,
+  "fold": 0,
+  "train_idx": [
+    0,
+    2,
+    4,
+    5,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    19,
+    20,
+    21,
+    23
+  ],
+  "test_idx": [
+    1,
+    3,
+    6,
+    10,
+    14,
+    18,
+    22
+  ],
+  "meta": {
+    "train_severities": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "test_severities": [
+      1.5
+    ]
+  },
+  "counts": {
+    "train": {
+      "n_windows": 17,
+      "n_faults": 17,
+      "n_labels": 6,
+      "faults": [
+        "synth_bearing_IR_unit0",
+        "synth_bearing_IR_unit1",
+        "synth_bearing_IR_unit3",
+        "synth_bearing_OR_unit0",
+        "synth_bearing_OR_unit1",
+        "synth_bearing_OR_unit3",
+        "synth_bearing_ball_unit0",
+        "synth_bearing_ball_unit1",
+        "synth_bearing_ball_unit3",
+        "synth_healthy_unit0",
+        "synth_healthy_unit2",
+        "synth_imbalance_unit0",
+        "synth_imbalance_unit1",
+        "synth_imbalance_unit3",
+        "synth_misalignment_unit0",
+        "synth_misalignment_unit1",
+        "synth_misalignment_unit3"
+      ],
+      "labels": [
+        "bearing_IR",
+        "bearing_OR",
+        "bearing_ball",
+        "healthy",
+        "imbalance",
+        "misalignment"
+      ]
+    },
+    "test": {
+      "n_windows": 7,
+      "n_faults": 7,
+      "n_labels": 6,
+      "faults": [
+        "synth_bearing_IR_unit2",
+        "synth_bearing_OR_unit2",
+        "synth_bearing_ball_unit2",
+        "synth_healthy_unit1",
+        "synth_healthy_unit3",
+        "synth_imbalance_unit2",
+        "synth_misalignment_unit2"
+      ],
+      "labels": [
+        "bearing_IR",
+        "bearing_OR",
+        "bearing_ball",
+        "healthy",
+        "imbalance",
+        "misalignment"
+      ]
+    }
+  },
+  "sha256": "64ccf7dd88a53691dcae56b184cadb681907070c8fef18fb0157019ed2b5b175"
+}

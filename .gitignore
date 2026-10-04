@@ -1,0 +1,18 @@
+# raw data: ~44 GB, and not all of it is ours to redistribute (MaFaulDa states no licence;
+# Paderborn is CC BY-NC). Re-download with `make data`; hashes are in provenance.json.
+data/
+
+# derived and regenerable
+results/cache/
+results/real/*.log
+results/*.log
+figures/*.png
+figures/*.json
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+dist/
+build/
+.DS_Store

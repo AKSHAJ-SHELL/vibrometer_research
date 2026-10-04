@@ -1,0 +1,46 @@
+{
+  "timestamp_utc": "2026-10-04T06:19:32+00:00",
+  "git": {
+    "commit": null,
+    "dirty": null,
+    "note": "not a git repository"
+  },
+  "python": "3.12.12",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "packages": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.3",
+    "matplotlib": "3.11.2",
+    "joblib": "1.5.3",
+    "pyyaml": "6.0.3",
+    "requests": "2.34.2",
+    "h5py": "3.14.0",
+    "vibedge": "0.2.0"
+  },
+  "data": {
+    "sha256sums_txt": "8caca47c7297dfe869dbdf180e8df37650951dcdffe24ad19a9725180d0eb4df",
+    "files_hashed_by_dataset": {
+      "cwru": 161,
+      "mafaulda": 6,
+      "mfpt": 40,
+      "paderborn": 32
+    }
+  },
+  "command": "make reproduce",
+  "results": [
+    "c1_cwru.json",
+    "c1_cwru_gbdt.json",
+    "c1_mafaulda.json",
+    "c1_paderborn.json",
+    "c1_paderborn_gbdt.json",
+    "cost.json",
+    "deployment.json",
+    "loss_curves_cwru.json",
+    "loss_curves_paderborn.json",
+    "severity_mafaulda.json",
+    "speed_ablation.json",
+    "transfer.json"
+  ]
+}
