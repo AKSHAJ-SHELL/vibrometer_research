@@ -392,7 +392,7 @@ def fig_speed_ablation() -> Path | None:
     axes[0][0].set_ylabel("Pooled macro-F1 (95% fault-level CI)")
     axes[0][0].set_ylim(0, 1)
     axes[0][0].legend(fontsize=8, frameon=False, loc="upper right")
-    fig.suptitle("The envelope advantage depends on speed accuracy: measured speed > rated-speed prior > generic estimate",
+    fig.suptitle("Estimated speed keeps the envelope advantage on CWRU (rated-speed prior) but loses most of it on Paderborn",
                  fontsize=10, color=INK)
     return save_figure(fig, OUT, "speed_ablation", data, source="CWRU, Paderborn KAt")
 
