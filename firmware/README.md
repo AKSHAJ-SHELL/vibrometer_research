@@ -1,4 +1,36 @@
-# On-device energy: ESP32-S3 + Arduino Uno power meter
+# On-device timing and energy: ESP32-S3 (+ Orange Pi gateway)
+
+**Current route: no power meter.** Time per window is **measured**: on the ESP32-S3 by its own clock, and on
+the Orange Pi by the gateway benchmark. Energy is **estimated** as measured time × a published power figure
+(`configs/power_estimates.yaml`: the ESP32-S3 datasheet v2.2 Table 5-9; a measured Orange Pi 5 Plus review).
+The paper states this as a limitation. The Uno power-meter route further down replaces the estimate with a
+measurement once you have a 0.5–4.7 Ω resistor.
+
+## A. ESP32-S3 timing (no extra parts)
+
+1. Arduino IDE: open `firmware/vibedge_esp32s3/vibedge_esp32s3.ino`, then **Tools → Board → ESP32S3 Dev Module**.
+   If your board has two USB ports, use the one marked USB and set **Tools → USB CDC On Boot → Enabled**.
+2. **Upload**, then open **Serial Monitor at 115200**. Expect `DEVICE CHECK PASS`, then a `cycle …` line about
+   every 20–30 s.
+3. After 3 or more `cycle` lines, select all the output, copy it, and save it as `results/real/device_serial.txt`.
+4. `make device-timing && make handoff`
+
+## B. Orange Pi 5 Plus gateway benchmark (no extra parts)
+
+On the Orange Pi (Ubuntu/Debian/Armbian image):
+```
+sudo apt install -y git python3-pip g++ gh
+gh auth login                                   # the repo is private
+git clone https://github.com/AKSHAJ-SHELL/vibedge && cd vibedge
+pip install -r requirements.txt
+make gateway                                    # ~1–3 min; uses the bundled real CWRU windows
+git add results/real/gateway_*.json && git commit -m "Orange Pi gateway benchmark" && git push
+```
+Then on your Mac: `git pull && make handoff`. The Mac reference row comes from running `make gateway` there.
+
+---
+
+# Measured energy (later): ESP32-S3 + Arduino Uno power meter
 
 The ESP32-S3 runs the paper's pipeline (features, then logistic regression) on 8 real CWRU windows stored
 in its flash. No accelerometer is needed. An Arduino Uno measures the ESP32's supply current through a

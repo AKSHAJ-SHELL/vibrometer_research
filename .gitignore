@@ -18,3 +18,4 @@ build/
 .DS_Store
 firmware/host_check/host_check
 .vscode/
+firmware/host_check/bench

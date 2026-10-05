@@ -1,4 +1,4 @@
-.PHONY: setup reproduce handoff check device-export device-check device-energy test test-draft data experiment-cwru real figures-real features experiment figures all clean
+.PHONY: setup reproduce handoff check device-export device-check device-energy device-timing gateway test test-draft data experiment-cwru real figures-real features experiment figures all clean
 
 PYTHON ?= python3
 export PYTHONPATH := src:$(PYTHONPATH)
@@ -39,6 +39,14 @@ device-check:
 
 device-energy:
 	$(PYTHON) scripts/device_energy.py
+
+# measured time + estimated energy (no power meter): paste the ESP32 serial output first
+device-timing:
+	$(PYTHON) scripts/device_timing.py
+
+# run on the gateway machine (Orange Pi 5 Plus) and once on a laptop for reference
+gateway:
+	$(PYTHON) scripts/bench_gateway.py
 
 figures-real:
 	$(PYTHON) scripts/make_real_figures.py

@@ -1,0 +1,34 @@
+# Power figures used to ESTIMATE energy from measured compute time (no power meter yet).
+# energy per window (estimate) = measured time per window × power below.
+# Every figure has its source and the conditions it was measured under; none is our measurement.
+# Accessed 2026-10-04.
+
+esp32s3:
+  # ESP32-S3 Series Datasheet v2.2 (Espressif), Table 5-9 "Current Consumption in Modem-sleep Mode",
+  # measured at 3.3 V supply, 25 °C. Row: 240 MHz, "Single core running 32-bit data access
+  # instructions, the other core in idle state" — our firmware runs the pipeline on one core
+  # with Wi-Fi/Bluetooth never started (modem-sleep = radio clock-gated).
+  source: "https://documentation.espressif.com/esp32-s3_datasheet_en.pdf (v2.2, Table 5-9)"
+  supply_v: 3.3
+  current_ma:
+    typical: 65.9      # Typ2: all peripheral clocks enabled (USB serial etc. are on)
+    low: 51.2          # Typ1: all peripheral clocks disabled
+    high: 75.9         # Typ2 + 10 mA: footnote 3, flash access can add ~10 mA (code + windows run from flash)
+  board_input_v: 5.0   # a dev board feeds the chip through a linear regulator: same current at 5 V
+  notes: >
+    Chip-level figure. The datasheet notes PSRAM-equipped variants may draw more. Board overhead
+    (regulator quiescent current, power LED, USB-serial bridge) is not included; the 5 V figure
+    (board_input_v × current) is a lower bound for the whole dev board.
+
+orangepi5plus:
+  # Rui Carmo, "A Review Of The Orange Pi 5+", Tao of Mac, 2024-01-20,
+  # https://taoofmac.com/space/blog/2024/01/20/1800 — measured at the wall socket.
+  # Idle: "the board idles just under 5W". Load: "up to 15W ... while running OnnxStream at full tilt"
+  # with all cores busy and heavy NVMe SSD traffic; Armbian; NVMe SSD + Wi-Fi card fitted; passive cooling.
+  source: "https://taoofmac.com/space/blog/2024/01/20/1800"
+  idle_w: 5.0
+  full_load_w: 15.0
+  notes: >
+    Third-party wall-socket measurement with an SSD and Wi-Fi card attached and a different
+    workload (all cores + SSD), so it overstates a CPU-only load somewhat; treat as an upper-end
+    board-level figure. Wall power includes the power supply's own losses.

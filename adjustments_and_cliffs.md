@@ -150,6 +150,18 @@ These change the paper's numbers.
   script (`scripts/device_energy.py`) was checked on a simulated capture with known answers: it recovered
   8.0 / 36.0 mJ and 250 mW idle to within 0.1%.
 
+- **C28. Energy is estimated, not measured (current route).**
+  - **Time per window is measured:** by the ESP32-S3's own clock (`device_timing.py`) and on the gateway
+    (`bench_gateway.py`).
+  - **Energy is time × a published power figure** (`configs/power_estimates.yaml`):
+    - **ESP32-S3:** 65.9 mA typical (range 51.2–75.9 mA) at 3.3 V, from datasheet v2.2 Table 5-9. That's
+      chip-level only; the dev board draws more, and 5 V × current is a lower bound for it.
+    - **Orange Pi 5 Plus:** about 5 W idle and 15 W at full load, from a third-party wall-socket measurement
+      with an SSD fitted.
+  - **The ratio still holds:** both feature sets keep the CPU fully busy, so the envelope/time energy ratio
+    equals the time ratio.
+  - **Sensors per gateway** counts compute only (no network or I/O).
+
 ### Spec wording to correct
 
 - **C22. §7 energy step.** A coarse grid doesn't *miss* the step, it *overshoots*: the error is ≈ ΔP·dt/2, so dt = 1 s gives 55 J. dt = 1e-3 only just passes (50.005 J).

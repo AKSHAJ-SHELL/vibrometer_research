@@ -1,0 +1,57 @@
+{
+  "generated_utc": "2026-10-05T02:04:52+00:00",
+  "machine": "Mac (Apple M5 Pro)",
+  "cores": 18,
+  "workers": 18,
+  "python": "3.12.12",
+  "windows": {
+    "n": 32,
+    "window_s": 4.0,
+    "fs": 12000.0,
+    "source": "data/cwru"
+  },
+  "time_source": "MEASURED on this machine (time.perf_counter; native: std::chrono)",
+  "per_set": {
+    "time_only": {
+      "python_single_core_ms": {
+        "median": 1.1745626106858253,
+        "p95": 1.286792103201151
+      },
+      "python_throughput_windows_per_s": 5981.053033071423,
+      "sensors_realtime": {
+        "hop_2s_50pct_overlap": 11962.106066142846,
+        "hop_4s_no_overlap": 23924.21213228569
+      }
+    },
+    "envelope_ratio": {
+      "python_single_core_ms": {
+        "median": 3.6714375019073486,
+        "p95": 3.9775415789335966
+      },
+      "python_throughput_windows_per_s": 2722.3688010286273,
+      "sensors_realtime": {
+        "hop_2s_50pct_overlap": 5444.737602057255,
+        "hop_4s_no_overlap": 10889.47520411451
+      }
+    }
+  },
+  "native_cpp": {
+    "time_only": {
+      "us_per_window": 255.33,
+      "window_s": 1.3653333333333333,
+      "realtime_factor": 5347.328294103056
+    },
+    "envelope_ratio": {
+      "us_per_window": 1232.45,
+      "window_s": 1.3653333333333333,
+      "realtime_factor": 1107.820466009439
+    }
+  },
+  "energy_estimate": {
+    "skipped": "no published power figure for this machine in configs/power_estimates.yaml"
+  },
+  "notes": [
+    "Sensors served assume compute is the only limit (network, I/O and OS overhead ignored).",
+    "Python feature extraction only; the model is a dot product of \u2264 40 terms (negligible)."
+  ]
+}

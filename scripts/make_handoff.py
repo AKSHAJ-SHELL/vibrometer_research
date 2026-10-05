@@ -131,33 +131,70 @@ def cost_table() -> list[str]:
 
 
 def device_energy() -> list[str]:
-    """On-device section — present only once the ESP32 + Uno measurement has been run."""
-    exp = (RES / "device_export.json")
-    eng = (RES / "device_energy.json")
-    if not eng.exists():
-        note = "_Not measured yet — see `firmware/README.md`._"
-        if exp.exists():
-            e = json.loads(exp.read_text())
-            hs = e["honest_split_macro_f1_at_this_window_length"]
-            note += (f" Exported model: {e['window_samples']}-sample windows ({e['window_s']:.2f} s); "
-                     f"honest-split macro-F1 at this length P3 envelope {hs['P3|envelope_ratio']:.3f} vs time {hs['P3|time_only']:.3f}.")
-        return [note]
-    d = json.loads(eng.read_text())
-    lines = [f"{d['device']}. Constants: shunt {d['constants']['rshunt_ohm']} Ω, V_ref {d['constants']['vref_v']} V "
-             f"({d['constants']['vref_source']}), supply {d['constants']['vsupply_v']} V. "
-             f"Idle power {d['power_idle_w'] * 1e3:.1f} mW.", "",
-             "| Feature set | Blocks | Time / window | Active power | Energy / window | Incremental energy / window |",
-             "|---|---|---|---|---|---|"]
-    for name in ("time_only", "envelope_ratio"):
-        v = d["per_set"].get(name)
-        if not v:
-            continue
-        lines.append(f"| {name} | {v['n_blocks']} | {v['time_per_window_ms']['mean']:.1f} ms | "
-                     f"{v['power_active_w']['mean'] * 1e3:.1f} mW | "
-                     f"{v['energy_per_window_mj']['mean']:.3f} ± {v['energy_per_window_mj']['sd']:.3f} mJ | "
-                     f"{v['incremental_energy_per_window_mj']['mean']:.3f} mJ |")
-    if "envelope_over_time_energy_ratio" in d["per_set"]:
-        lines += ["", f"envelope_ratio costs {d['per_set']['envelope_over_time_energy_ratio']:.2f}× the energy of time_only per window."]
+    """On-device section: measured energy if the Uno capture exists, else measured time + estimated energy."""
+    eng, tim, exp = RES / "device_energy.json", RES / "device_timing.json", RES / "device_export.json"
+    if eng.exists():
+        d = json.loads(eng.read_text())
+        lines = [f"**Measured** with the Uno power meter. {d['device']}. Constants: shunt {d['constants']['rshunt_ohm']} Ω, "
+                 f"V_ref {d['constants']['vref_v']} V ({d['constants']['vref_source']}), supply {d['constants']['vsupply_v']} V. "
+                 f"Idle power {d['power_idle_w'] * 1e3:.1f} mW.", "",
+                 "| Feature set | Blocks | Time / window | Active power | Energy / window | Incremental energy / window |",
+                 "|---|---|---|---|---|---|"]
+        for name in ("time_only", "envelope_ratio"):
+            v = d["per_set"].get(name)
+            if v:
+                lines.append(f"| {name} | {v['n_blocks']} | {v['time_per_window_ms']['mean']:.1f} ms | "
+                             f"{v['power_active_w']['mean'] * 1e3:.1f} mW | "
+                             f"{v['energy_per_window_mj']['mean']:.3f} ± {v['energy_per_window_mj']['sd']:.3f} mJ | "
+                             f"{v['incremental_energy_per_window_mj']['mean']:.3f} mJ |")
+        return lines
+    if tim.exists():
+        d = json.loads(tim.read_text())
+        c = d["power_constants"]
+        lines = [f"{d['device']}. Device parity check: **{d['device_check']}**.", "",
+                 f"Time is **measured** ({d['time_source']}). Energy is **estimated**: time × "
+                 f"{c['current_ma']['typical']} mA × {c['chip_v']} V (ESP32-S3 datasheet v2.2, Table 5-9; "
+                 f"range {c['current_ma']['low']}–{c['current_ma']['high']} mA).", "",
+                 "| Feature set | Time / window (measured) | Real-time factor | Energy / window (estimated, chip) | Range | Dev board at 5 V (lower bound) |",
+                 "|---|---|---|---|---|---|"]
+        for name in ("time_only", "envelope_ratio"):
+            v = d["per_set"][name]
+            e = v["energy_per_window_mj_estimate"]
+            lines.append(f"| {name} | {v['time_per_window_ms']['median']:.2f} ms | {v['realtime_factor']:.0f}× | "
+                         f"{e['chip_3v3_typical']:.2f} mJ | {e['chip_3v3_range'][0]:.2f}–{e['chip_3v3_range'][1]:.2f} mJ | "
+                         f"≥ {e['board_5v_lower_bound']:.2f} mJ |")
+        lines += ["", f"envelope_ratio takes {d['envelope_over_time_ratio']:.2f}× the time (and so, at equal power, the energy) of time_only."]
+        return lines
+    note = "_Not run yet — see `firmware/README.md`._"
+    if exp.exists():
+        e = json.loads(exp.read_text())
+        hs = e["honest_split_macro_f1_at_this_window_length"]
+        note += (f" Exported model: {e['window_samples']}-sample windows ({e['window_s']:.2f} s); "
+                 f"honest-split macro-F1 at this length P3 envelope {hs['P3|envelope_ratio']:.3f} vs time {hs['P3|time_only']:.3f}.")
+    return [note]
+
+
+def gateway() -> list[str]:
+    """Gateway benchmark rows, one per machine that has run scripts/bench_gateway.py."""
+    files = sorted(RES.glob("gateway_*.json"))
+    if not files:
+        return ["_Not run yet — `make gateway` on the gateway machine._"]
+    lines = ["Time is **measured** on each machine; sensors served counts compute only, at a 2 s hop "
+             "(4 s windows, 50% overlap). Energy is **estimated** from a published board figure where one exists.", "",
+             "| Machine | Feature set | Python, 1 core | Windows / s (all cores) | Sensors in real time | Native C++, 1 core | Est. energy / window |",
+             "|---|---|---|---|---|---|---|"]
+    for f in files:
+        d = json.loads(f.read_text())
+        nat = d.get("native_cpp") or {}
+        en = d.get("energy_estimate", {}).get("per_set", {})
+        for name in ("time_only", "envelope_ratio"):
+            v = d["per_set"][name]
+            n = nat.get(name) if isinstance(nat, dict) else None
+            ntxt = f"{n['us_per_window'] / 1e3:.2f} ms per {n['window_s']:.2f} s" if n else "—"
+            etxt = f"{en[name]['board_mj_per_window_at_full_load']:.1f} mJ (board)" if name in en else "—"
+            lines.append(f"| {d['machine']} ({d['cores']} cores) | {name} | {v['python_single_core_ms']['median']:.2f} ms | "
+                         f"{v['python_throughput_windows_per_s']:,.0f} | ~{v['sensors_realtime']['hop_2s_50pct_overlap']:,.0f} | "
+                         f"{ntxt} | {etxt} |")
     return lines
 
 
@@ -217,9 +254,13 @@ def main() -> int:
         "",
         *cost_table(),
         "",
-        "## On-device energy (ESP32-S3, Uno power meter)",
+        "## On-device (ESP32-S3)",
         "",
         *device_energy(),
+        "",
+        "## Gateway (Orange Pi 5 Plus / laptop)",
+        "",
+        *gateway(),
         "",
         "## Figures",
         "",
