@@ -28,3 +28,6 @@ tests_draft/
 paper/*.log
 paper/*.aux
 paper/*.out
+
+# shareable package (rebuild any time; not tracked)
+vibrometer_research_package.zip

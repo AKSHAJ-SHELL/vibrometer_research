@@ -1,6 +1,6 @@
 # vibedge — results handoff
 
-_Generated 2026-10-05T02:11:08+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
+_Generated 2026-10-05T03:01:07+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
 
 Provenance recorded 2026-10-04T06:20:40+00:00 (written by `make reproduce` after its run) · git: 671f53578811ec46f2a76feb119373edc1b572bc · Python 3.12.12 · data manifest sha256 `8caca47c7297dfe8…`
 
@@ -52,6 +52,8 @@ Time is **measured** on each machine; sensors served counts compute only, at a 2
 |---|---|---|---|---|---|---|
 | Mac (Apple M5 Pro) (18 cores) | time_only | 1.13 ms | 5,671 | ~11,342 | 0.27 ms per 1.37 s | — |
 | Mac (Apple M5 Pro) (18 cores) | envelope_ratio | 3.53 ms | 2,786 | ~5,571 | 1.19 ms per 1.37 s | — |
+| RK3588 OPi 5 Plus (8 cores) | time_only | 6.99 ms | 322 | ~645 | 0.83 ms · little: 4.43 ms · big: 0.83 ms per 1.37 s | 46.5 mJ (board) |
+| RK3588 OPi 5 Plus (8 cores) | envelope_ratio | 18.77 ms | 177 | ~353 | 3.14 ms · little: 13.74 ms · big: 3.16 ms per 1.37 s | 85.0 mJ (board) |
 
 ## Figures
 
