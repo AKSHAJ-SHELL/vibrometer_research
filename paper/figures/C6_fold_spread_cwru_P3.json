@@ -1,0 +1,60 @@
+{
+  "folds": {
+    "cwru_B_0.007": {
+      "time_only": 1.0,
+      "envelope_ratio": 0.125
+    },
+    "cwru_B_0.014": {
+      "time_only": 0.625,
+      "envelope_ratio": 0.8125
+    },
+    "cwru_B_0.021": {
+      "time_only": 0.9375,
+      "envelope_ratio": 0.4375
+    },
+    "cwru_IR_0.007": {
+      "time_only": 0.125,
+      "envelope_ratio": 1.0
+    },
+    "cwru_IR_0.014": {
+      "time_only": 0.0,
+      "envelope_ratio": 0.0625
+    },
+    "cwru_IR_0.021": {
+      "time_only": 0.0,
+      "envelope_ratio": 1.0
+    },
+    "cwru_OR_0.007_@12": {
+      "time_only": 0.0625,
+      "envelope_ratio": 1.0
+    },
+    "cwru_OR_0.007_@3": {
+      "time_only": 1.0,
+      "envelope_ratio": 1.0
+    },
+    "cwru_OR_0.007_@6": {
+      "time_only": 1.0,
+      "envelope_ratio": 1.0
+    },
+    "cwru_OR_0.014_@6": {
+      "time_only": 0.0,
+      "envelope_ratio": 0.0
+    },
+    "cwru_OR_0.021_@12": {
+      "time_only": 1.0,
+      "envelope_ratio": 1.0
+    },
+    "cwru_OR_0.021_@3": {
+      "time_only": 0.0,
+      "envelope_ratio": 0.0
+    },
+    "cwru_OR_0.021_@6": {
+      "time_only": 0.0,
+      "envelope_ratio": 1.0
+    },
+    "cwru_healthy": {
+      "time_only": 0.0,
+      "envelope_ratio": 0.0
+    }
+  }
+}

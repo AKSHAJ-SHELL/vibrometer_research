@@ -1,0 +1,97 @@
+{
+  "generated_utc": "2026-10-05T02:31:17+00:00",
+  "machine": "RK3588 OPi 5 Plus",
+  "cores": 8,
+  "workers": 8,
+  "python": "3.10.12",
+  "windows": {
+    "n": 32,
+    "window_s": 4.0,
+    "fs": 12000.0,
+    "source": "results/real/bench_windows.npz"
+  },
+  "time_source": "MEASURED on this machine (time.perf_counter; native: std::chrono)",
+  "per_set": {
+    "time_only": {
+      "python_single_core_ms": {
+        "median": 6.987025999990237,
+        "p95": 7.340008750020388
+      },
+      "python_throughput_windows_per_s": 322.25409542743716,
+      "sensors_realtime": {
+        "hop_2s_50pct_overlap": 644.5081908548743,
+        "hop_4s_no_overlap": 1289.0163817097487
+      }
+    },
+    "envelope_ratio": {
+      "python_single_core_ms": {
+        "median": 18.772309499979656,
+        "p95": 18.987044249996643
+      },
+      "python_throughput_windows_per_s": 176.54227673163928,
+      "sensors_realtime": {
+        "hop_2s_50pct_overlap": 353.08455346327855,
+        "hop_4s_no_overlap": 706.1691069265571
+      }
+    }
+  },
+  "native_cpp": {
+    "default": {
+      "time_only": {
+        "us_per_window": 827.04,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 1650.867350228929
+      },
+      "envelope_ratio": {
+        "us_per_window": 3144.61,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 434.182087232863
+      }
+    },
+    "little (cpu0, 1800 MHz)": {
+      "time_only": {
+        "us_per_window": 4432.44,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 308.03199441692016
+      },
+      "envelope_ratio": {
+        "us_per_window": 13737.7,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 99.38587487958925
+      }
+    },
+    "big (cpu4, 2400 MHz)": {
+      "time_only": {
+        "us_per_window": 829.96,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 1645.059199640143
+      },
+      "envelope_ratio": {
+        "us_per_window": 3156.75,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 432.5123412792693
+      }
+    }
+  },
+  "energy_estimate": {
+    "source": "https://taoofmac.com/space/blog/2024/01/20/1800",
+    "idle_w": 5.0,
+    "full_load_w": 15.0,
+    "per_set": {
+      "time_only": {
+        "board_mj_per_window_at_full_load": 46.547119843749485,
+        "incremental_mj_per_window": 31.031413229166322,
+        "watts_per_sensor_at_capacity_2s_hop": 0.023273559921874742
+      },
+      "envelope_ratio": {
+        "board_mj_per_window_at_full_load": 84.96548406250248,
+        "incremental_mj_per_window": 56.64365604166832,
+        "watts_per_sensor_at_capacity_2s_hop": 0.04248274203125124
+      }
+    }
+  },
+  "notes": [
+    "Sensors served assume compute is the only limit (network, I/O and OS overhead ignored).",
+    "Python feature extraction only; the model is a dot product of \u2264 40 terms (negligible)."
+  ]
+}

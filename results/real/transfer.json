@@ -11,6 +11,23 @@
       "bearing_IR",
       "bearing_OR"
     ],
+    "counts": {
+      "cwru": {
+        "windows": 257,
+        "recordings": 52,
+        "fault_ids": 14
+      },
+      "paderborn": {
+        "windows": 4620,
+        "recordings": 2319,
+        "fault_ids": 29
+      },
+      "mfpt": {
+        "windows": 32,
+        "recordings": 20,
+        "fault_ids": 3
+      }
+    },
     "scores": [
       [
         0.206663273529287,
@@ -64,6 +81,23 @@
       "bearing_IR",
       "bearing_OR"
     ],
+    "counts": {
+      "cwru": {
+        "windows": 257,
+        "recordings": 52,
+        "fault_ids": 14
+      },
+      "paderborn": {
+        "windows": 4620,
+        "recordings": 2319,
+        "fault_ids": 29
+      },
+      "mfpt": {
+        "windows": 32,
+        "recordings": 20,
+        "fault_ids": 3
+      }
+    },
     "scores": [
       [
         0.5511841100076394,

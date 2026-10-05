@@ -1,0 +1,15 @@
+\begin{table}[t]
+\caption{Cost per feature set: features, feature-vector bytes (float32), parameters (model plus standardisation) and host extraction time per 4 s window (laptop CPU, relative only).}
+\label{tab:cost}
+\centering
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrr}
+\hline
+Set & Feat. & Bytes & LR par. & GBDT par. & ms \\
+\hline
+time\_only & 17 & 68 & 106 & 10,320 & 1.17 \\
+envelope\_ratio & 39 & 156 & 238 & 5,372 & 3.66 \\
+full & 40 & 160 & 244 & 5,380 & 4.14 \\
+\hline
+\end{tabular}
+\end{table}

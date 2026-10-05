@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\caption{Shaft-speed source versus envelope advantage (logistic regression). ``Within 2\%'' is the share of windows whose speed is within 2\% of the measured value; ``used'' is the share that keeps the speed-dependent features (the rest fall back to speed-free features); $\Delta$ as in Table~\ref{tab:headline}.}
+\label{tab:speed}
+\centering
+\begin{tabular}{llcccl}
+\hline
+Dataset & Speed source & Within 2\% & Locked to 2$\times$ & Used & $\Delta$ envelope $-$ time (95\% CI) \\
+\hline
+CWRU & measured & 100\% & 0\% & 100\% & P3 +0.16 [$-$0.06, +0.40]; P4 +0.44 [+0.28, +0.61] \\
+CWRU & estimated, rated $\pm$10\% & 100\% & 0\% & 100\% & P3 +0.16 [$-$0.06, +0.40]; P4 +0.45 [+0.29, +0.62] \\
+CWRU & estimated, 10--60 Hz & 12\% & 67\% & 100\% & P3 +0.20 [$-$0.05, +0.43]; P4 +0.39 [+0.22, +0.68] \\
+Paderborn & measured & 100\% & 0\% & 100\% & P3 +0.24 [+0.15, +0.33]; P3b +0.17 [+0.06, +0.30] \\
+Paderborn & estimated, rated $\pm$10\% & 57\% & 0\% & 37\% & P3 +0.04 [$-$0.03, +0.11]; P3b $-$0.03 [$-$0.09, +0.02] \\
+Paderborn & estimated, 10--60 Hz & 38\% & 12\% & 40\% & P3 +0.05 [$-$0.02, +0.12]; P3b +0.03 [$-$0.04, +0.09] \\
+\hline
+\end{tabular}
+\end{table*}

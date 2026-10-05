@@ -19,3 +19,12 @@ build/
 firmware/host_check/host_check
 .vscode/
 firmware/host_check/bench
+
+# conference template package (kept locally; paper/ holds what the paper needs)
+ff47ba1126983ce8981dff074fee8201.zip
+# agent-written draft tests: kept locally, not published
+tests_draft/
+# LaTeX build by-products
+paper/*.log
+paper/*.aux
+paper/*.out

@@ -1,0 +1,13 @@
+\begin{table*}[t]
+\caption{Orange Pi 5 Plus edge gateway. Python: the full pipeline per 4 s window on one core, and windows per second with every core busy; sensors served in real time at a 2 s hop (compute only). C++: the ported pipeline per 1.37 s window pinned to one Cortex-A55 (little) or Cortex-A76 (big) core. Energy: estimated, full-load board power divided by throughput.}
+\label{tab:gateway}
+\centering
+\begin{tabular}{lrrrrrr}
+\hline
+Feature set & Python ms & Windows/s & Sensors & C++ A55 ms & C++ A76 ms & mJ/window (est.) \\
+\hline
+time\_only & 6.99 & 322 & 645 & 4.43 & 0.83 & 46.5 \\
+envelope\_ratio & 18.77 & 177 & 353 & 13.74 & 3.16 & 85.0 \\
+\hline
+\end{tabular}
+\end{table*}

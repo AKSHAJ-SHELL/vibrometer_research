@@ -1,4 +1,4 @@
-.PHONY: pi-push pi-pull setup reproduce handoff check device-export device-check device-energy device-timing gateway test test-draft data experiment-cwru real figures-real features experiment figures all clean
+.PHONY: paper pi-push pi-pull setup reproduce handoff check device-export device-check device-energy device-timing gateway test test-draft data experiment-cwru real figures-real features experiment figures all clean
 
 PYTHON ?= python3
 export PYTHONPATH := src:$(PYTHONPATH)
@@ -27,6 +27,10 @@ reproduce:
 
 handoff:
 	$(PYTHON) scripts/make_handoff.py
+
+# IEEE paper: numbers and tables from results/real, 300 dpi figures, PDF via tectonic
+paper:
+	$(PYTHON) scripts/make_paper.py
 
 # on-device energy (firmware/README.md)
 device-export:
@@ -64,7 +68,7 @@ figures:
 	$(PYTHON) scripts/make_figures.py --out figures --synthetic
 
 check:
-	$(PYTHON) -m pytest tests/ tests_draft/ -v --tb=short
+	$(PYTHON) -m pytest tests/ $(wildcard tests_draft/) -v --tb=short
 
 all: check features experiment figures
 

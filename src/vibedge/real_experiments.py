@@ -415,7 +415,9 @@ def transfer_matrix(tables: dict[str, FeatureTable], feature_set: str = "envelop
                 pooled = {"macro_f1": ev.macro_f1, "majority_baseline_f1": ev.majority_baseline_f1}
             M[i, j] = pooled["macro_f1"]
             B[i, j] = pooled["majority_baseline_f1"]
-    return {"datasets": names, "feature_set": feature_set, "classes": TRANSFER_CLASSES,
+    counts = {n: {"windows": len(t.meta), "recordings": len(set(t.col("recording_id"))),
+                  "fault_ids": len(set(t.col("fault_id")))} for n, t in tables.items()}
+    return {"datasets": names, "feature_set": feature_set, "classes": TRANSFER_CLASSES, "counts": counts,
             "scores": M.tolist(), "majority_baseline": B.tolist(), "diagonal_protocol": diag_protocol,
             "view": "deployment (6 kHz LPF, 26.7 kSPS, MEMS noise), 2 s windows"}
 

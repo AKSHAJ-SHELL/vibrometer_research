@@ -8,6 +8,7 @@ Fixed encodings across every figure:
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -18,8 +19,9 @@ from vibedge.viz import COLORS_3, apply_style, save_figure
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "results" / "real"
-OUT = ROOT / "figures" / "real"
+OUT = Path(os.environ.get("VIBEDGE_FIG_OUT", ROOT / "figures" / "real")).resolve()   # the paper build redirects this
 
+PAPER_MODE = bool(os.environ.get("VIBEDGE_PAPER"))   # paper build: compact labels for print size
 SETS = ["time_only", "envelope_ratio", "full"]
 SET_COLOR = dict(zip(SETS, COLORS_3))
 SET_MARKER = {"time_only": "o", "envelope_ratio": "s", "full": "^"}
@@ -88,20 +90,20 @@ def fig_ladder(model: str = "logreg") -> Path | None:
         ax.set_xlim(-0.4, len(protos) - 0.6 + (0.9 if len(protos) > 1 else 0.6))
         ax.set_title(f"{DATASET_NAME[ds]}\n{res['n_recordings']} recordings · "
                      f"{res['n_fault_identities']} fault ids", fontsize=9, color=INK)
-        # direct labels at the last protocol, text in ink
+        # direct labels at the last protocol, text in ink; baseline included so labels never overlap
         last = len(protos) - 1
-        ends = sorted(((data[ds][fs][last], fs) for fs in SETS), reverse=True)
+        gap = 0.10 if os.environ.get("VIBEDGE_PAPER") else 0.055
+        ends = sorted([(data[ds][fs][last], fs.replace("_", " "), INK) for fs in SETS]
+                      + [(base[last], "train-majority", MUTED)], reverse=True)
         placed: list[float] = []
-        for yv, fs in ends:
+        for yv, label, color in ends:
             yl = yv
             for q in placed:
-                if abs(yl - q) < 0.055:
-                    yl = q - 0.055
+                if abs(yl - q) < gap:
+                    yl = q - gap
             placed.append(yl)
-            ax.annotate(fs.replace("_", " "), (last, yv), xytext=(last + 0.12, yl), fontsize=7.5,
-                        color=INK, va="center", annotation_clip=False)
-        ax.annotate("train-majority", (last, base[last]), xytext=(last + 0.12, base[last]),
-                    fontsize=7.5, color=MUTED, va="center", annotation_clip=False)
+            ax.annotate(label, (last, yv), xytext=(last + 0.12, yl), fontsize=7.5,
+                        color=color, va="center", annotation_clip=False)
     axes[0][0].set_ylabel("Pooled macro-F1")
     axes[0][0].set_ylim(0, 1.05)
     handles = [plt.Line2D([], [], color=SET_COLOR[s], marker=SET_MARKER[s], lw=2, label=s) for s in SETS]
@@ -131,7 +133,8 @@ def fig_confusion_cwru() -> Path | None:
             for j in range(cm.shape[1]):
                 ax.text(j, i, f"{int(cm[i, j])}", ha="center", va="center", fontsize=9,
                         color="white" if norm[i, j] > 0.55 else INK)
-        ax.set_xticks(range(len(labels)), labels)
+        ax.set_xticks(range(len(labels)), labels, rotation=35 if PAPER_MODE else 0,
+                      ha="right" if PAPER_MODE else "center")
         ax.set_yticks(range(len(labels)), labels)
         ax.set_xlabel("Predicted")
         ax.grid(False)
@@ -236,7 +239,12 @@ def fig_severity() -> Path | None:
 
     handles = [Patch(color=SET_COLOR[fs], label=fs) for fs in SETS]
     handles.append(plt.Line2D([], [], color=BASE, ls="--", label="train-majority baseline"))
-    ax.legend(handles=handles, fontsize=8, frameon=True, framealpha=0.9, loc="lower right")
+    if PAPER_MODE:   # reserved strip above the bars, clear of the large tick labels
+        ax.set_ylim(0, 1.5)
+        ax.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
+        ax.legend(handles=handles, fontsize=8, frameon=False, loc="upper center", ncol=2)
+    else:
+        ax.legend(handles=handles, fontsize=8, frameon=True, framealpha=0.9, loc="lower right")
     ax.set_title("C11 · MaFaulDa imbalance, held-out severity (P4)", fontsize=10, color=INK)
     return save_figure(fig, OUT, "C11_severity_mafaulda", res, source="MaFaulDa (UFRJ), licence not stated")
 
@@ -297,10 +305,12 @@ def fig_envelope_cwru() -> Path | None:
         m = es.freqs <= 450
         ax.plot(es.freqs[m], es.mag[m], color=COLORS_3[0], lw=1)
         top = es.mag[m].max()
-        for name, f0, h in (("BPFO", ff.bpfo, 1.02), ("2×BSF", ff.ball_fault, 1.14), ("BPFI", ff.bpfi, 1.02)):
+        # labels sit beside their lines: BPFO to the left, 2×BSF centred higher, BPFI to the right
+        for name, f0, h, ha in (("BPFO", ff.bpfo, 1.04, "right"), ("2×BSF", ff.ball_fault, 1.30, "center"),
+                                ("BPFI", ff.bpfi, 1.04, "left")):
             ax.axvline(f0, color="0.6", ls=":", lw=1, zorder=0)
-            ax.text(f0, top * h, name, fontsize=7, color=MUTED, ha="center", va="bottom")
-        ax.set_ylim(0, top * 1.3)
+            ax.text(f0, top * h, name, fontsize=7, color=MUTED, ha=ha, va="bottom")
+        ax.set_ylim(0, top * 1.55)
         ax.set_ylabel("|E(f)|", fontsize=8)
         ax.set_title(f"{title} · fr {fr:.2f} Hz", fontsize=9, color=INK, loc="left")
         data[fname] = {"fr_hz": fr, "BPFO": ff.bpfo, "BPFI": ff.bpfi, "2xBSF": ff.ball_fault,
@@ -340,12 +350,15 @@ def fig_loss_curves() -> Path | None:
         ax_f.set_ylabel("held-out macro-F1 (pooled)")
         ax_f.set_ylim(0, 1.05)
         unseen = r["curves"]["envelope_ratio|P3"]["n_folds_unseen_class"]
-        ax_l.set_title(f"{DATASET_NAME[ds]} — log-loss (marker = held-out P3 minimum)",
+        ax_l.set_title(f"{DATASET_NAME[ds]}: log-loss" if PAPER_MODE
+                       else f"{DATASET_NAME[ds]} — log-loss (marker = held-out P3 minimum)",
                        fontsize=8.5, color=INK, loc="left")
         if unseen:
-            ax_l.text(0.99, 0.02, f"held-out P3 loss excludes {unseen} fold whose class\nis absent from training (healthy)",
+            ax_l.text(0.99, 0.02, "P3 loss excludes the\nhealthy fold" if PAPER_MODE else
+                      f"held-out P3 loss excludes {unseen} fold whose class\nis absent from training (healthy)",
                       transform=ax_l.transAxes, ha="right", va="bottom", fontsize=7, color=MUTED)
-        ax_f.set_title(f"{DATASET_NAME[ds]} — held-out macro-F1", fontsize=8.5, color=INK, loc="left")
+        ax_f.set_title(f"{DATASET_NAME[ds]}: held-out macro-F1" if PAPER_MODE
+                       else f"{DATASET_NAME[ds]} — held-out macro-F1", fontsize=8.5, color=INK, loc="left")
     for ax in axes[-1]:
         ax.set_xlabel("boosting stage")
     handles = [plt.Line2D([], [], color=SET_COLOR[fs], lw=2, label=fs) for fs in ("time_only", "envelope_ratio")]
@@ -368,7 +381,13 @@ def fig_speed_ablation() -> Path | None:
               sorted({str(r["protocol"]) for r in res[ds]["oracle"]["rows"] if r["fold"] == "pooled"})]
     modes = ["oracle", "estimated", "prior"]
     mode_name = {"oracle": "measured\nspeed", "estimated": "estimated\n10–60 Hz", "prior": "estimated\nrated ±10%"}
-    fig, axes = plt.subplots(1, len(panels), figsize=(3.4 * len(panels), 4.4), sharey=True, squeeze=False)
+    if PAPER_MODE:   # 2×2 at print size: four panels in a row are too cramped for a 7 in figure
+        ncols = 2
+        nrows = -(-len(panels) // ncols)
+        fig, grid = plt.subplots(nrows, ncols, figsize=(7.2, 2.9 * nrows), sharey=True, squeeze=False)
+    else:
+        fig, grid = plt.subplots(1, len(panels), figsize=(3.4 * len(panels), 4.4), sharey=True, squeeze=False)
+    axes = [list(grid.ravel())]
     data = {}
     for ax, (ds, p) in zip(axes[0], panels):
         x = np.arange(len(modes))
@@ -383,13 +402,22 @@ def fig_speed_ablation() -> Path | None:
                         color=SET_COLOR[fs], ms=8, capsize=3, lw=1.5, mec="white", label=fs)
             data[f"{ds}|P{p}|{fs}"] = {"macro_f1": ys, "low": lo, "high": hi, "modes": modes}
         labels = []
+        short = {"oracle": "measured", "estimated": "10–60 Hz", "prior": "rated ±10%"}
         for m in modes:
             acc = res[ds][m]["speed_accuracy"]["within_2pct"]
-            labels.append(f"{mode_name[m]}\n{acc:.0%} within 2%")
+            labels.append(f"{short[m]}\n{acc:.0%}" if PAPER_MODE else f"{mode_name[m]}\n{acc:.0%} within 2%")
         ax.set_xticks(x, labels, fontsize=7.5)
+        if PAPER_MODE:
+            ax.set_xlabel("speed source (share within 2%)")
         ax.set_xlim(-0.5, len(modes) - 0.5)
-        ax.set_title(f"{DATASET_NAME[ds]} · {PROTO_NAME.get(p, p).replace("-" + chr(10), "-").replace(chr(10), " ")}", fontsize=9, color=INK)
-    axes[0][0].set_ylabel("Pooled macro-F1 (95% fault-level CI)")
+        ax.set_title(f"{ds.upper() if ds == 'cwru' else DATASET_NAME[ds]} · P{p}" if PAPER_MODE else
+                     f"{DATASET_NAME[ds]} · {PROTO_NAME.get(p, p).replace("-" + chr(10), "-").replace(chr(10), " ")}",
+                     fontsize=9, color=INK)
+    if PAPER_MODE:
+        for i in range(0, len(axes[0]), 2):
+            axes[0][i].set_ylabel("Macro-F1 (95% CI)")
+    else:
+        axes[0][0].set_ylabel("Pooled macro-F1 (95% fault-level CI)")
     axes[0][0].set_ylim(0, 1)
     axes[0][0].legend(fontsize=8, frameon=False, loc="upper right")
     fig.suptitle("Estimated speed keeps the envelope advantage on CWRU (rated-speed prior) but loses most of it on Paderborn",

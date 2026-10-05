@@ -1,0 +1,19 @@
+\begin{table}[t]
+\caption{Pooled macro-F1 along the split ladder (logistic regression, measured shaft speed). Env.\ = envelope\_ratio, Time = time\_only; -- = protocol not applicable to the dataset.}
+\label{tab:ladder}
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\hline
+ & \multicolumn{2}{c}{CWRU} & \multicolumn{2}{c}{Paderborn} \\
+Protocol & Env. & Time & Env. & Time \\
+\hline
+P0 random windows & 1.000 & 1.000 & 0.945 & 0.749 \\
+P1 leave-one-recording-out & 0.928 & 0.944 & -- & -- \\
+P2 leave-one-load-out & 0.931 & 0.975 & 0.869 & 0.618 \\
+P3 leave-one-fault-out & 0.457 & 0.298 & 0.745 & 0.506 \\
+P3b artificial $\rightarrow$ real & -- & -- & 0.553 & 0.381 \\
+P4 leave-one-severity-out & 0.681 & 0.237 & -- & -- \\
+\hline
+\end{tabular}
+\end{table}
