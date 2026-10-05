@@ -1,4 +1,4 @@
-.PHONY: setup reproduce handoff check device-export device-check device-energy device-timing gateway test test-draft data experiment-cwru real figures-real features experiment figures all clean
+.PHONY: pi-push pi-pull setup reproduce handoff check device-export device-check device-energy device-timing gateway test test-draft data experiment-cwru real figures-real features experiment figures all clean
 
 PYTHON ?= python3
 export PYTHONPATH := src:$(PYTHONPATH)
@@ -71,3 +71,18 @@ all: check features experiment figures
 clean:
 	rm -rf results/* figures/*.png figures/*.json __pycache__ .pytest_cache
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+
+# ---- Orange Pi over rsync (no git or GitHub login needed on the Pi) ----
+# usage: make pi-push PI=orangepi@10.0.0.57     then on the Pi: cd ~/vibedge && make gateway
+#        make pi-pull PI=orangepi@10.0.0.57     brings the gateway results back, then: make handoff
+PI ?=
+PI_DIR ?= ~/vibedge
+pi-push:
+	@test -n "$(PI)" || (echo "set PI=user@ip, e.g. make pi-push PI=orangepi@10.0.0.57" && exit 1)
+	rsync -avz --delete --exclude data/ --exclude results/cache/ --exclude .venv/ --exclude '__pycache__/' \
+		--exclude .pytest_cache/ --exclude '*.egg-info/' --exclude firmware/host_check/bench \
+		--exclude firmware/host_check/host_check ./ $(PI):$(PI_DIR)/
+
+pi-pull:
+	@test -n "$(PI)" || (echo "set PI=user@ip" && exit 1)
+	rsync -avz '$(PI):$(PI_DIR)/results/real/gateway_*.json' results/real/
