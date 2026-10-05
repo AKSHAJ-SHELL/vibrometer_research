@@ -1,4 +1,4 @@
-// Arduino Uno power meter for the ESP32-S3 (see firmware/README.md for wiring).
+// Arduino Uno power meter for the ESP32 (see firmware/README.md for wiring).
 //
 // A0 = voltage across the shunt in the ESP32's ground return (current = V / R_shunt).
 // A1 = ESP32 marker pin (3.3 V high). Read as analog with a 512 threshold, so the 3.3 V

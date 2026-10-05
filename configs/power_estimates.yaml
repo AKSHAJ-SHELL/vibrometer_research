@@ -3,6 +3,24 @@
 # Every figure has its source and the conditions it was measured under; none is our measurement.
 # Accessed 2026-10-04.
 
+esp32:
+  # ESP32 Series Datasheet v5.3 (Espressif), Table 4-2 "Power Consumption by Power Modes":
+  # Modem-sleep (CPU powered up, Wi-Fi/BT clock-gated), 240 MHz, dual-core chip(s): "30 mA ~ 68 mA".
+  # Applies to ESP32-D0WD-V3 etc. (the chip on ESP32-WROOM-32 / NodeMCU-32S boards).
+  # The datasheet gives a range only, no typical value. Our loop keeps one core fully busy and runs
+  # from flash, so the point estimate is the top of the range.
+  source: "https://documentation.espressif.com/esp32_datasheet_en.pdf (v5.3, Table 4-2)"
+  supply_v: 3.3
+  current_ma:
+    point: 68.0
+    low: 30.0
+    high: 68.0
+  board_input_v: 5.0
+  notes: >
+    Chip-level range from the datasheet; no typical value is published for this mode. Board overhead
+    (regulator, power LED, CP2102/CH340 USB-serial bridge) is not included; 5 V × current is a lower
+    bound for the whole dev board.
+
 esp32s3:
   # ESP32-S3 Series Datasheet v2.2 (Espressif), Table 5-9 "Current Consumption in Modem-sleep Mode",
   # measured at 3.3 V supply, 25 °C. Row: 240 MHz, "Single core running 32-bit data access
@@ -11,7 +29,7 @@ esp32s3:
   source: "https://documentation.espressif.com/esp32-s3_datasheet_en.pdf (v2.2, Table 5-9)"
   supply_v: 3.3
   current_ma:
-    typical: 65.9      # Typ2: all peripheral clocks enabled (USB serial etc. are on)
+    point: 65.9        # Typ2: all peripheral clocks enabled (USB serial etc. are on)
     low: 51.2          # Typ1: all peripheral clocks disabled
     high: 75.9         # Typ2 + 10 mA: footnote 3, flash access can add ~10 mA (code + windows run from flash)
   board_input_v: 5.0   # a dev board feeds the chip through a linear regulator: same current at 5 V

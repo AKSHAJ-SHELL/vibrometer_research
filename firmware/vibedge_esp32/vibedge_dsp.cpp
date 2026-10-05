@@ -1,5 +1,5 @@
 // Port of src/vibedge/device_ref.py — keep the two in step.
-// Speed: the ESP32-S3 has a single-precision FPU only (double is emulated in software), so
+// Speed: the ESP32 has a single-precision FPU only (double is emulated in software), so
 // per-sample work is float32. Sums are kept accurate by accumulating 256 samples in float,
 // then flushing to a double (BlockSum). Band edges use exact double comparisons on index ranges.
 #include "vibedge_dsp.h"
@@ -17,7 +17,8 @@ static const double kPi = 3.14159265358979323846;
 static float* g_x = nullptr;     // [VB_N]          signal, later the envelope
 static float* g_re = nullptr;    // [VB_N + 2*PAD]  FFT real part / filtfilt extension buffer
 static float* g_im = nullptr;    // [VB_N]          FFT imaginary part
-static float* g_mag = nullptr;   // [VB_N/2 + 1]    one-sided spectrum magnitude
+// The one-sided spectrum magnitude is written into g_im in place (|X[k]| needs only re[k], im[k]),
+// which saves a 32 KB buffer — this keeps the total at ~210 KB for the classic ESP32's split heap.
 static float* g_sin = nullptr;   // [VB_N/4 + 1]    quarter-wave sine table
 
 static const int kPadMax = (VB_BP_PAD > VB_DEC_PAD) ? VB_BP_PAD : VB_DEC_PAD;
@@ -26,16 +27,15 @@ bool vb_init() {
   g_x = (float*)malloc(sizeof(float) * VB_N);
   g_re = (float*)malloc(sizeof(float) * (VB_N + 2 * kPadMax));
   g_im = (float*)malloc(sizeof(float) * VB_N);
-  g_mag = (float*)malloc(sizeof(float) * (VB_N / 2 + 1));
   g_sin = (float*)malloc(sizeof(float) * (VB_N / 4 + 1));
-  if (!g_x || !g_re || !g_im || !g_mag || !g_sin) { vb_free(); return false; }
+  if (!g_x || !g_re || !g_im || !g_sin) { vb_free(); return false; }
   for (int k = 0; k <= VB_N / 4; ++k) g_sin[k] = (float)sin(2.0 * kPi * k / VB_N);
   return true;
 }
 
 void vb_free() {
-  free(g_x); free(g_re); free(g_im); free(g_mag); free(g_sin);
-  g_x = g_re = g_im = g_mag = g_sin = nullptr;
+  free(g_x); free(g_re); free(g_im); free(g_sin);
+  g_x = g_re = g_im = g_sin = nullptr;
 }
 
 // cos/sin(2*pi*k/VB_N) for 0 <= k < VB_N/2, from the quarter-wave table.
@@ -98,8 +98,8 @@ static void fft(float* re, float* im, int n, bool inverse) {
   }
 }
 
-// One-sided Hann-windowed magnitude |rfft(x*w)| * 2 / sum(w) into mag[0..n/2]. Uses g_re/g_im.
-static void spectrum(const float* x, int n, float* mag) {
+// One-sided Hann-windowed magnitude |rfft(x*w)| * 2 / sum(w), written into g_im[0..n/2] (in place).
+static void spectrum(const float* x, int n) {
   BlockSum wsum_b;
   for (int i = 0; i < n; ++i) {
     const float w = 0.5f - 0.5f * cos_n(i, n);   // periodic Hann
@@ -110,7 +110,7 @@ static void spectrum(const float* x, int n, float* mag) {
   const double wsum = wsum_b.value();
   fft(g_re, g_im, n, false);
   const float g = (float)(2.0 / (wsum + kEps));
-  for (int k = 0; k <= n / 2; ++k) mag[k] = sqrtf(g_re[k] * g_re[k] + g_im[k] * g_im[k]) * g;
+  for (int k = 0; k <= n / 2; ++k) g_im[k] = sqrtf(g_re[k] * g_re[k] + g_im[k] * g_im[k]) * g;
 }
 
 // ---------------------------------------------------------------- time domain (10)
@@ -233,7 +233,7 @@ static double band_energy(const float* spec, int nbin, double df, double center)
   return (double)spec[best] * spec[best];
 }
 
-// x holds the signal on entry; on exit g_mag[0..nd/2] holds the envelope spectrum. Returns nd.
+// x holds the signal on entry; on exit g_im[0..nd/2] holds the envelope spectrum. Returns nd.
 static int envelope_spectrum(float* x, int n) {
   filtfilt(VB_BP_SOS, VB_BP_ZI, VB_BP_NSEC, VB_BP_PAD, x, n);          // band-pass 2–5 kHz
   for (int i = 0; i < n; ++i) { g_re[i] = x[i]; g_im[i] = 0.0f; }       // analytic signal (Hilbert)
@@ -249,7 +249,7 @@ static int envelope_spectrum(float* x, int n) {
   for (int i = 0; i < nd; ++i) { x[i] = x[i * VB_DECIM]; m.add(x[i]); }
   const float mean = (float)(m.value() / nd);
   for (int i = 0; i < nd; ++i) x[i] -= mean;
-  spectrum(x, nd, g_mag);
+  spectrum(x, nd);
   return nd;
 }
 
@@ -282,20 +282,20 @@ static void load(const int16_t* q, float scale) {
 void vb_features_time(const int16_t* q, float scale, float* out) {
   load(q, scale);
   time_features(g_x, VB_N, out);                 // [0..10)
-  spectrum(g_x, VB_N, g_mag);
-  broadband(g_mag, VB_N / 2 + 1, (double)VB_FS / VB_N, VB_FS, out + 10);   // [10..17)
+  spectrum(g_x, VB_N);
+  broadband(g_im, VB_N / 2 + 1, (double)VB_FS / VB_N, VB_FS, out + 10);    // [10..17)
 }
 
 void vb_features_env(const int16_t* q, float scale, float fr_hz, float* out) {
   // column order = device_ref.SET_NAMES["envelope_ratio"]: time(10) order(6) env(12) sideband(4) broadband(7)
   load(q, scale);
   time_features(g_x, VB_N, out);
-  spectrum(g_x, VB_N, g_mag);
+  spectrum(g_x, VB_N);
   const double df = (double)VB_FS / VB_N;
-  order_features(g_mag, VB_N / 2 + 1, df, fr_hz, out + 10);
-  broadband(g_mag, VB_N / 2 + 1, df, VB_FS, out + 32);
+  order_features(g_im, VB_N / 2 + 1, df, fr_hz, out + 10);   // both read the spectrum before the
+  broadband(g_im, VB_N / 2 + 1, df, VB_FS, out + 32);          // envelope stage reuses g_im
   const int nd = envelope_spectrum(g_x, VB_N);
-  envelope_features(g_mag, nd / 2 + 1, ((double)VB_FS / VB_DECIM) / nd, fr_hz, out + 16);
+  envelope_features(g_im, nd / 2 + 1, ((double)VB_FS / VB_DECIM) / nd, fr_hz, out + 16);
 }
 
 template <int NF, int NC>

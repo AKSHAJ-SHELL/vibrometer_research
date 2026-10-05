@@ -153,7 +153,7 @@ def device_energy() -> list[str]:
         c = d["power_constants"]
         lines = [f"{d['device']}. Device parity check: **{d['device_check']}**.", "",
                  f"Time is **measured** ({d['time_source']}). Energy is **estimated**: time × "
-                 f"{c['current_ma']['typical']} mA × {c['chip_v']} V (ESP32-S3 datasheet v2.2, Table 5-9; "
+                 f"{c['current_ma']['point']} mA × {c['chip_v']} V ({d['energy_source'].split('current from ')[-1]}; "
                  f"range {c['current_ma']['low']}–{c['current_ma']['high']} mA).", "",
                  "| Feature set | Time / window (measured) | Real-time factor | Energy / window (estimated, chip) | Range | Dev board at 5 V (lower bound) |",
                  "|---|---|---|---|---|---|"]
@@ -161,7 +161,7 @@ def device_energy() -> list[str]:
             v = d["per_set"][name]
             e = v["energy_per_window_mj_estimate"]
             lines.append(f"| {name} | {v['time_per_window_ms']['median']:.2f} ms | {v['realtime_factor']:.0f}× | "
-                         f"{e['chip_3v3_typical']:.2f} mJ | {e['chip_3v3_range'][0]:.2f}–{e['chip_3v3_range'][1]:.2f} mJ | "
+                         f"{e['chip_3v3_point']:.2f} mJ | {e['chip_3v3_range'][0]:.2f}–{e['chip_3v3_range'][1]:.2f} mJ | "
                          f"≥ {e['board_5v_lower_bound']:.2f} mJ |")
         lines += ["", f"envelope_ratio takes {d['envelope_over_time_ratio']:.2f}× the time (and so, at equal power, the energy) of time_only."]
         return lines
@@ -254,7 +254,7 @@ def main() -> int:
         "",
         *cost_table(),
         "",
-        "## On-device (ESP32-S3)",
+        "## On-device (ESP32 microcontroller)",
         "",
         *device_energy(),
         "",

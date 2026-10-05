@@ -1,19 +1,32 @@
-# On-device timing and energy: ESP32-S3 (+ Orange Pi gateway)
+# On-device timing and energy: ESP32 microcontroller (+ Orange Pi gateway)
 
-**Current route: no power meter.** Time per window is **measured**: on the ESP32-S3 by its own clock, and on
+**Current route: no power meter.** Time per window is **measured**: on the ESP32 by its own clock, and on
 the Orange Pi by the gateway benchmark. Energy is **estimated** as measured time × a published power figure
-(`configs/power_estimates.yaml`: the ESP32-S3 datasheet v2.2 Table 5-9; a measured Orange Pi 5 Plus review).
+(`configs/power_estimates.yaml`: the ESP32 datasheet v5.3 Table 4-2 or the ESP32-S3 datasheet v2.2 Table 5-9; a measured Orange Pi 5 Plus review).
 The paper states this as a limitation. The Uno power-meter route further down replaces the estimate with a
 measurement once you have a 0.5–4.7 Ω resistor.
 
-## A. ESP32-S3 timing (no extra parts)
+## A. ESP32 timing (no extra parts)
 
-1. Arduino IDE: open `firmware/vibedge_esp32s3/vibedge_esp32s3.ino`, then **Tools → Board → ESP32S3 Dev Module**.
-   If your board has two USB ports, use the one marked USB and set **Tools → USB CDC On Boot → Enabled**.
-2. **Upload**, then open **Serial Monitor at 115200**. Expect `DEVICE CHECK PASS`, then a `cycle …` line about
-   every 20–30 s.
-3. After 3 or more `cycle` lines, select all the output, copy it, and save it as `results/real/device_serial.txt`.
-4. `make device-timing && make handoff`
+Works on a classic ESP32 board (e.g. **NodeMCU-32S**, ESP32-WROOM-32) or an ESP32-S3. The firmware prints the
+chip model at boot, and `device_timing.py` picks that chip's datasheet figure automatically.
+
+1. **Make the board visible to the Mac.**
+   - Plug it in with a **data** USB cable (many are charge-only), directly, not through a hub.
+   - Run `ls /dev/cu.*`. A new `/dev/cu.usbserial-…`, `/dev/cu.SLAB_USBtoUART` or `/dev/cu.wchusbserial…`
+     should appear.
+   - If nothing appears with a known-good data cable, read the small chip beside the USB port and install
+     its driver: **CP2102** → Silicon Labs "CP210x VCP" driver; **CH340/CH9102** → WCH driver.
+2. **Arduino IDE.**
+   - Open `firmware/vibedge_esp32/vibedge_esp32.ino`.
+   - Board: **NodeMCU-32S** (classic ESP32) or **ESP32S3 Dev Module** (ESP32-S3).
+   - Port: the new `usbserial…` port, **not** `/dev/cu.debug-console`.
+3. **Upload.**
+   - If it stops at `Connecting...`: hold **BOOT**, tap **EN**, then release BOOT.
+   - Then open **Serial Monitor at 115200** and press **EN** once to see the boot output.
+   - Expect a `chip …` line, `DEVICE CHECK PASS`, then a `cycle …` line every 20–30 s.
+4. After 3 or more `cycle` lines, copy all the output into `results/real/device_serial.txt`.
+5. `make device-timing && make handoff`
 
 ## B. Orange Pi 5 Plus gateway benchmark (no extra parts)
 
@@ -30,25 +43,25 @@ Then on your Mac: `git pull && make handoff`. The Mac reference row comes from r
 
 ---
 
-# Measured energy (later): ESP32-S3 + Arduino Uno power meter
+# Measured energy (later): ESP32 + Arduino Uno power meter
 
-The ESP32-S3 runs the paper's pipeline (features, then logistic regression) on 8 real CWRU windows stored
+The ESP32 runs the paper's pipeline (features, then logistic regression) on 8 real CWRU windows stored
 in its flash. No accelerometer is needed. An Arduino Uno measures the ESP32's supply current through a
 1 Ω shunt resistor, and reads a marker pin that the ESP32 raises while it computes. The result is
 **energy per window** for `time_only` vs `envelope_ratio`.
 
 ```
-                 ┌───────────── Uno 5V ───────────────► ESP32-S3  5V pin
- USB ──► Uno     │                                      ESP32-S3  GND ──┬──► Uno A0
+                 ┌───────────── Uno 5V ───────────────► ESP32  5V pin
+ USB ──► Uno     │                                      ESP32  GND ──┬──► Uno A0
  (Orange Pi      │                                                      │
   or laptop)     │                                                 [1 Ω shunt]
                  └───────────── Uno GND ◄───────────────────────────────┘
-                                Uno A1  ◄─────────────── ESP32-S3  GPIO4 (marker)
+                                Uno A1  ◄─────────────── ESP32  GPIO4 (marker)
 ```
 
 ## Parts
 
-- ESP32-S3 dev board (any; PSRAM not needed — the work buffers use about 225 KB of internal RAM)
+- ESP32 or ESP32-S3 dev board (PSRAM not needed; the work buffers use about 210 KB of internal RAM)
 - Arduino Uno
 - 1 Ω resistor, 1%, ¼ W or more (the shunt)
 - jumper wires, breadboard
@@ -58,10 +71,10 @@ in its flash. No accelerometer is needed. An Arduino Uno measures the ESP32's su
 
 | From | To | Why |
 |---|---|---|
-| Uno **5V** | ESP32-S3 **5V** pin | powers the ESP32 (it draws ~40–150 mA without Wi-Fi) |
-| ESP32-S3 **GND** | one end of the 1 Ω shunt **and** Uno **A0** | A0 reads the voltage across the shunt = current × 1 Ω |
+| Uno **5V** | ESP32 **5V** pin | powers the ESP32 (it draws ~40–150 mA without Wi-Fi) |
+| ESP32 **GND** | one end of the 1 Ω shunt **and** Uno **A0** | A0 reads the voltage across the shunt = current × 1 Ω |
 | other end of the shunt | Uno **GND** | the ESP32's current returns through the shunt |
-| ESP32-S3 **GPIO4** | Uno **A1** | marker: high while computing |
+| ESP32 **GPIO4** | Uno **A1** | marker: high while computing |
 
 **Do not connect the ESP32's USB during the power run.** USB would power it around the shunt and the
 reading would be wrong. Use USB only for step 2, before wiring.
@@ -70,8 +83,8 @@ reading would be wrong. Use USB only for step 2, before wiring.
 
 1. **Check the port on your computer** (no hardware): `make device-check`. It compiles the ESP32's DSP code
    for your computer and compares it with the Python reference. Expect `HOST CHECK PASS`.
-2. **Flash and check the ESP32-S3** over USB. In the Arduino IDE, select the board *ESP32S3 Dev Module*,
-   open `firmware/vibedge_esp32s3/vibedge_esp32s3.ino`, then Upload and open Serial Monitor at 115200. Expect
+2. **Flash and check the ESP32** over USB. In the Arduino IDE, select the board *ESP32S3 Dev Module*,
+   open `firmware/vibedge_esp32/vibedge_esp32.ino`, then Upload and open Serial Monitor at 115200. Expect
    `DEVICE CHECK PASS`, timings, then a `cycle …` line every ~20 s. Copy the output into
    `results/real/device_serial.txt`; it is the per-window timing from the ESP32's own clock.
 3. **Flash the Uno** with `firmware/uno_power_meter/uno_power_meter.ino`.
@@ -112,8 +125,8 @@ reading would be wrong. Use USB only for step 2, before wiring.
 
 | File | What |
 |---|---|
-| `vibedge_esp32s3/vibedge_dsp.cpp` | the on-device pipeline: a port of `src/vibedge/device_ref.py` |
-| `vibedge_esp32s3/vibedge_check.h` | parity check run on the host (`make device-check`) and on the device at boot |
-| `vibedge_esp32s3/vibedge_*.h` | generated by `scripts/export_device.py` (model, filters, windows, expected outputs) |
+| `vibedge_esp32/vibedge_dsp.cpp` | the on-device pipeline: a port of `src/vibedge/device_ref.py` |
+| `vibedge_esp32/vibedge_check.h` | parity check run on the host (`make device-check`) and on the device at boot |
+| `vibedge_esp32/vibedge_*.h` | generated by `scripts/export_device.py` (model, filters, windows, expected outputs) |
 | `uno_power_meter/` | the Uno sketch |
 | `host_check/` | the host build of the parity check |

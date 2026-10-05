@@ -1,6 +1,6 @@
-"""Reference of the exact algorithm the ESP32-S3 firmware runs (float64 numpy).
+"""Reference of the exact algorithm the ESP32 firmware runs (float64 numpy).
 
-The firmware (firmware/vibedge_esp32s3/) is a line-by-line port of THIS file,
+The firmware (firmware/vibedge_esp32/) is a line-by-line port of THIS file,
 not of the main pipeline. This file is in turn checked against
 vibedge.features.extract_features (scripts/export_device.py reports the gap),
 so the chain is: main pipeline ≈ device_ref ≈ firmware.

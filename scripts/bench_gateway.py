@@ -8,7 +8,7 @@ Measured on THIS machine, for time_only and envelope_ratio:
   2. Throughput with every core busy: windows per second across N worker processes.
   3. Sensors served in real time = throughput × seconds between windows per sensor
      (2 s with 50% overlap as in the paper, 4 s without overlap).
-  4. Native C++ (the exact ESP32-S3 code) on one core: time per 1.37 s window.
+  4. Native C++ (the exact ESP32 code) on one core: time per 1.37 s window.
 Energy per window is ESTIMATED only on a known board (configs/power_estimates.yaml):
   full-load board power ÷ throughput (board-level, all cores busy), and the increment over idle.
 
@@ -117,8 +117,8 @@ def native() -> dict | None:
         return {"skipped": "no C++ compiler (install g++)"}
     fw = ROOT / "firmware"
     exe = fw / "host_check" / "bench"
-    cmd = [cxx, "-O2", "-std=c++17", "-Wno-missing-braces", f"-I{fw / 'vibedge_esp32s3'}",
-           str(fw / "host_check" / "bench.cpp"), str(fw / "vibedge_esp32s3" / "vibedge_dsp.cpp"), "-o", str(exe)]
+    cmd = [cxx, "-O2", "-std=c++17", "-Wno-missing-braces", f"-I{fw / 'vibedge_esp32'}",
+           str(fw / "host_check" / "bench.cpp"), str(fw / "vibedge_esp32" / "vibedge_dsp.cpp"), "-o", str(exe)]
     if subprocess.run(cmd, capture_output=True).returncode != 0:
         return {"skipped": "native build failed"}
     out = subprocess.run([str(exe)], capture_output=True, text=True).stdout.split()

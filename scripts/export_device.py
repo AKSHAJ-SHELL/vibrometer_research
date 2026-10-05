@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Export the deployable models, test windows and expected outputs for the ESP32-S3.
+"""Export the deployable models, test windows and expected outputs for the ESP32.
 
-Writes into firmware/vibedge_esp32s3/:
+Writes into firmware/vibedge_esp32/:
   vibedge_config.h   window length, filters (second-order sections + initial conditions), geometry
   vibedge_model.h    logistic regression per feature set (scaler + weights), trained on ALL CWRU windows
   vibedge_windows.h  8 real CWRU windows (2 per class, distinct physical faults) as int16 + scale + speed
@@ -33,7 +33,7 @@ from vibedge.taxonomy import CLASSES, CLASS_TO_IDX  # noqa: E402
 
 N = 16384                 # power of two (radix-2 FFT on the device); 1.365 s at 12 kHz
 FS = 12000.0
-OUT = ROOT / "firmware" / "vibedge_esp32s3"
+OUT = ROOT / "firmware" / "vibedge_esp32"
 # 2 per class, each a different physical fault (load 0 recordings)
 TEST_FILES = ["97.mat", "100.mat", "105.mat", "169.mat", "130.mat", "197.mat", "118.mat", "185.mat"]
 

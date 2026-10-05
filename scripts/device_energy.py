@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Energy per window on the ESP32-S3, from the Uno power-meter capture.
+"""Energy per window on the ESP32, from the Uno power-meter capture.
 
   python3 scripts/device_energy.py                                  # nominal constants
   python3 scripts/device_energy.py --vref 1.083 --vsupply 4.98      # measured with a multimeter
@@ -128,7 +128,7 @@ def cmd_energy(a) -> int:
     out = {
         "generated_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "csv": str(a.csv.relative_to(ROOT) if a.csv.is_relative_to(ROOT) else a.csv),
-        "device": "ESP32-S3, 240 MHz, no radio; 8 stored CWRU windows of 16384 samples (1.37 s at 12 kHz)",
+        "device": "ESP32, 240 MHz, no radio; 8 stored CWRU windows of 16384 samples (1.37 s at 12 kHz)",
         "constants": {"rshunt_ohm": a.rshunt, "vref_v": a.vref, "vsupply_v": a.vsupply,
                       "vref_source": a.vref_source},
         "sampling": {"median_dt_ms": dt_med * 1e3, "rows": int(len(t)), "duration_s": float(t[-1] - t[0])},

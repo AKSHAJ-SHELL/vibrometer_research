@@ -1,13 +1,13 @@
 // vibedge on-device feature extraction + logistic regression.
 // A line-by-line port of src/vibedge/device_ref.py (the Python reference it is checked against).
-// Plain C++: compiles for the ESP32-S3 (Arduino) and on a desktop for the host check.
+// Plain C++: compiles for the ESP32 (Arduino) and on a desktop for the host check.
 #pragma once
 #include <stdint.h>
 
 #define VB_TIME_FEATURES 17   // time_only:      10 time-domain + 7 broadband
 #define VB_ENV_FEATURES  39   // envelope_ratio: + 6 order + 12 envelope harmonics + 4 sidebands
 
-// Allocate work buffers (~225 KB) and the twiddle table. Returns false if memory runs out.
+// Allocate work buffers (~210 KB) and the twiddle table. Returns false if memory runs out.
 bool vb_init();
 void vb_free();
 

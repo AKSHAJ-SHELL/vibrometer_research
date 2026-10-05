@@ -1,4 +1,4 @@
-// vibedge on the ESP32-S3: feature extraction + logistic regression on 8 stored real CWRU windows,
+// vibedge on an ESP32 (classic ESP32 e.g. NodeMCU-32S, or ESP32-S3): feature extraction + logistic regression on 8 stored real CWRU windows,
 // with a marker pin the Arduino Uno power meter reads. See firmware/README.md for wiring.
 //
 // Boot:  parity check against the Python reference (prints PASS/FAIL over USB serial at 115200),
@@ -53,7 +53,8 @@ void setup() {
   Serial.setTxTimeoutMs(0);               // never stall when no USB host is attached (power runs)
 #endif
   delay(2000);
-  Serial.println("\nvibedge ESP32-S3");
+  Serial.println("\nvibedge ESP32");
+  Serial.printf("chip %s rev %d, %d cores\n", ESP.getChipModel(), (int)ESP.getChipRevision(), (int)ESP.getChipCores());
   Serial.printf("CPU %lu MHz, free heap %lu bytes, PSRAM %lu bytes\n", (unsigned long)getCpuFrequencyMhz(),
                 (unsigned long)ESP.getFreeHeap(), (unsigned long)ESP.getPsramSize());
   if (!vb_init()) {

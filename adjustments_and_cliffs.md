@@ -154,8 +154,12 @@ These change the paper's numbers.
   - **Time per window is measured:** by the ESP32-S3's own clock (`device_timing.py`) and on the gateway
     (`bench_gateway.py`).
   - **Energy is time × a published power figure** (`configs/power_estimates.yaml`):
-    - **ESP32-S3:** 65.9 mA typical (range 51.2–75.9 mA) at 3.3 V, from datasheet v2.2 Table 5-9. That's
-      chip-level only; the dev board draws more, and 5 V × current is a lower bound for it.
+    - **The ESP32 used (NodeMCU-32S, classic ESP32):** 30–68 mA at 240 MHz, from ESP32 datasheet v5.3,
+      Table 4-2. The datasheet gives a range only, with no typical value, so the point estimate uses 68 mA,
+      the top of the range (one core fully busy, running from flash).
+    - **An ESP32-S3, if one is used:** 65.9 mA (51.2–75.9 mA), from datasheet v2.2, Table 5-9.
+    - **Either way:** chip-level only, at 3.3 V. The dev board draws more, so 5 V × current is a lower bound
+      for it.
     - **Orange Pi 5 Plus:** about 5 W idle and 15 W at full load, from a third-party wall-socket measurement
       with an SSD fitted.
   - **The ratio still holds:** both feature sets keep the CPU fully busy, so the envelope/time energy ratio
