@@ -189,8 +189,14 @@ def gateway() -> list[str]:
         en = d.get("energy_estimate", {}).get("per_set", {})
         for name in ("time_only", "envelope_ratio"):
             v = d["per_set"][name]
-            n = nat.get(name) if isinstance(nat, dict) else None
-            ntxt = f"{n['us_per_window'] / 1e3:.2f} ms per {n['window_s']:.2f} s" if n else "—"
+            parts = []
+            if isinstance(nat, dict) and "skipped" not in nat:
+                for label, res in nat.items():
+                    r = res.get(name) if isinstance(res, dict) else None
+                    if r:
+                        tag = "" if label == "default" else f"{label.split(' (')[0]}: "
+                        parts.append(f"{tag}{r['us_per_window'] / 1e3:.2f} ms")
+            ntxt = (" · ".join(parts) + " per 1.37 s") if parts else "—"
             etxt = f"{en[name]['board_mj_per_window_at_full_load']:.1f} mJ (board)" if name in en else "—"
             lines.append(f"| {d['machine']} ({d['cores']} cores) | {name} | {v['python_single_core_ms']['median']:.2f} ms | "
                          f"{v['python_throughput_windows_per_s']:,.0f} | ~{v['sensors_realtime']['hop_2s_50pct_overlap']:,.0f} | "

@@ -8,7 +8,8 @@ Measured on THIS machine, for time_only and envelope_ratio:
   2. Throughput with every core busy: windows per second across N worker processes.
   3. Sensors served in real time = throughput × seconds between windows per sensor
      (2 s with 50% overlap as in the paper, 4 s without overlap).
-  4. Native C++ (the exact ESP32 code) on one core: time per 1.37 s window.
+  4. Native C++ (the exact microcontroller code) on one core: time per 1.37 s window; on big.LITTLE
+     boards (Orange Pi 5 Plus: Cortex-A55 + A76) once pinned to each core type.
 Energy per window is ESTIMATED only on a known board (configs/power_estimates.yaml):
   full-load board power ÷ throughput (board-level, all cores busy), and the increment over idle.
 
@@ -111,7 +112,32 @@ def throughput(X, fr, groups, workers: int, total: int) -> float:
         return total / (time.perf_counter() - t0)
 
 
+def core_types() -> dict[str, int]:
+    """Linux: one representative CPU per core type, keyed by max frequency (big.LITTLE, e.g. RK3588:
+    cpu0-3 Cortex-A55, cpu4-7 Cortex-A76). Elsewhere: {} (the OS schedules the run)."""
+    base = Path("/sys/devices/system/cpu")
+    groups: dict[int, int] = {}
+    for cpu in sorted(base.glob("cpu[0-9]*"), key=lambda p: int(p.name[3:])):
+        f = cpu / "cpufreq" / "cpuinfo_max_freq"
+        if f.exists():
+            groups.setdefault(int(f.read_text()), int(cpu.name[3:]))
+    if len(groups) < 2:
+        return {}
+    ordered = sorted(groups.items())                       # slowest core type first
+    names = ["little", "big", "prime"]
+    return {f"{names[i] if i < len(names) else 'core' + str(i)} (cpu{c}, {mhz // 1000} MHz)": c
+            for i, (mhz, c) in enumerate(ordered)}
+
+
+def _parse(stdout: str) -> dict:
+    vals = dict(zip(stdout.split()[0::2], stdout.split()[1::2]))
+    win_s = float(vals["window_samples"]) / float(vals["fs"])
+    return {name: {"us_per_window": float(vals[name]), "window_s": win_s,
+                   "realtime_factor": win_s / (float(vals[name]) * 1e-6)} for name in SETS}
+
+
 def native() -> dict | None:
+    """The exact microcontroller C++ code, one core. On big.LITTLE Linux boards, once per core type."""
     cxx = shutil.which("clang++") or shutil.which("g++")
     if not cxx:
         return {"skipped": "no C++ compiler (install g++)"}
@@ -121,11 +147,14 @@ def native() -> dict | None:
            str(fw / "host_check" / "bench.cpp"), str(fw / "vibedge_esp32" / "vibedge_dsp.cpp"), "-o", str(exe)]
     if subprocess.run(cmd, capture_output=True).returncode != 0:
         return {"skipped": "native build failed"}
-    out = subprocess.run([str(exe)], capture_output=True, text=True).stdout.split()
-    vals = dict(zip(out[0::2], out[1::2]))
-    win_s = float(vals["window_samples"]) / float(vals["fs"])
-    return {name: {"us_per_window": float(vals[name]), "window_s": win_s,
-                   "realtime_factor": win_s / (float(vals[name]) * 1e-6)} for name in SETS}
+    out = {"default": _parse(subprocess.run([str(exe)], capture_output=True, text=True).stdout)}
+    taskset = shutil.which("taskset")
+    for label, cpu in core_types().items():
+        if taskset:
+            r = subprocess.run([taskset, "-c", str(cpu), str(exe)], capture_output=True, text=True)
+            if r.returncode == 0:
+                out[label] = _parse(r.stdout)
+    return out
 
 
 def main() -> int:
@@ -154,8 +183,10 @@ def main() -> int:
 
     nat = native()
     if nat and "skipped" not in nat:
-        for s in SETS:
-            print(f"  native C++ {s:15s} {nat[s]['us_per_window']:9.1f} µs per {nat[s]['window_s']:.2f} s window (1 core)")
+        for label, res in nat.items():
+            for st in SETS:
+                print(f"  native C++ [{label}] {st:15s} {res[st]['us_per_window']:9.1f} µs per "
+                      f"{res[st]['window_s']:.2f} s window (1 core, {res[st]['realtime_factor']:,.0f}× real time)")
 
     energy = None
     key = board_key(name)

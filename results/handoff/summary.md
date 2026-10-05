@@ -1,6 +1,6 @@
 # vibedge — results handoff
 
-_Generated 2026-10-05T02:05:26+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
+_Generated 2026-10-05T02:11:08+00:00 by `scripts/make_handoff.py` from `results/real/*.json`. Every number below is read from those files; regenerate with `make handoff` rather than editing by hand._
 
 Provenance recorded 2026-10-04T06:20:40+00:00 (written by `make reproduce` after its run) · git: 671f53578811ec46f2a76feb119373edc1b572bc · Python 3.12.12 · data manifest sha256 `8caca47c7297dfe8…`
 
@@ -40,7 +40,7 @@ Measured on one 4 s window of `105.mat` at 12000 Hz; models fit on all CWRU wind
 | envelope_ratio | 39 | 156 | 238 (160 + 78) | 5372 (5294 + 78) | 3.66 ms |
 | full | 40 | 160 | 244 (164 + 80) | 5380 (5300 + 80) | 4.14 ms |
 
-## On-device (ESP32-S3)
+## On-device (ESP32 microcontroller)
 
 _Not run yet — see `firmware/README.md`._ Exported model: 16384-sample windows (1.37 s); honest-split macro-F1 at this length P3 envelope 0.455 vs time 0.299.
 
@@ -50,8 +50,8 @@ Time is **measured** on each machine; sensors served counts compute only, at a 2
 
 | Machine | Feature set | Python, 1 core | Windows / s (all cores) | Sensors in real time | Native C++, 1 core | Est. energy / window |
 |---|---|---|---|---|---|---|
-| Mac (Apple M5 Pro) (18 cores) | time_only | 1.17 ms | 5,981 | ~11,962 | 0.26 ms per 1.37 s | — |
-| Mac (Apple M5 Pro) (18 cores) | envelope_ratio | 3.67 ms | 2,722 | ~5,445 | 1.23 ms per 1.37 s | — |
+| Mac (Apple M5 Pro) (18 cores) | time_only | 1.13 ms | 5,671 | ~11,342 | 0.27 ms per 1.37 s | — |
+| Mac (Apple M5 Pro) (18 cores) | envelope_ratio | 3.53 ms | 2,786 | ~5,571 | 1.19 ms per 1.37 s | — |
 
 ## Figures
 

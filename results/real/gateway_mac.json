@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-05T02:04:52+00:00",
+  "generated_utc": "2026-10-05T02:11:08+00:00",
   "machine": "Mac (Apple M5 Pro)",
   "cores": 18,
   "workers": 18,
@@ -14,37 +14,39 @@
   "per_set": {
     "time_only": {
       "python_single_core_ms": {
-        "median": 1.1745626106858253,
-        "p95": 1.286792103201151
+        "median": 1.1274170828983188,
+        "p95": 1.203552063088864
       },
-      "python_throughput_windows_per_s": 5981.053033071423,
+      "python_throughput_windows_per_s": 5670.860353801799,
       "sensors_realtime": {
-        "hop_2s_50pct_overlap": 11962.106066142846,
-        "hop_4s_no_overlap": 23924.21213228569
+        "hop_2s_50pct_overlap": 11341.720707603597,
+        "hop_4s_no_overlap": 22683.441415207195
       }
     },
     "envelope_ratio": {
       "python_single_core_ms": {
-        "median": 3.6714375019073486,
-        "p95": 3.9775415789335966
+        "median": 3.5289586521685123,
+        "p95": 3.7079997127875686
       },
-      "python_throughput_windows_per_s": 2722.3688010286273,
+      "python_throughput_windows_per_s": 2785.6694840716737,
       "sensors_realtime": {
-        "hop_2s_50pct_overlap": 5444.737602057255,
-        "hop_4s_no_overlap": 10889.47520411451
+        "hop_2s_50pct_overlap": 5571.338968143347,
+        "hop_4s_no_overlap": 11142.677936286695
       }
     }
   },
   "native_cpp": {
-    "time_only": {
-      "us_per_window": 255.33,
-      "window_s": 1.3653333333333333,
-      "realtime_factor": 5347.328294103056
-    },
-    "envelope_ratio": {
-      "us_per_window": 1232.45,
-      "window_s": 1.3653333333333333,
-      "realtime_factor": 1107.820466009439
+    "default": {
+      "time_only": {
+        "us_per_window": 267.71,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 5100.046069752096
+      },
+      "envelope_ratio": {
+        "us_per_window": 1192.1,
+        "window_s": 1.3653333333333333,
+        "realtime_factor": 1145.3177865391608
+      }
     }
   },
   "energy_estimate": {
