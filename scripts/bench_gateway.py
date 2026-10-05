@@ -59,8 +59,10 @@ def machine_name() -> str:
 
 
 def board_key(name: str) -> str | None:
-    n = name.lower().replace(" ", "")
-    return "orangepi5plus" if "orangepi5plus" in n else None
+    """Match the device-tree model to an entry in configs/power_estimates.yaml.
+    The Orange Pi 5 Plus reports itself as e.g. "RK3588 OPi 5 Plus" or "Orange Pi 5 Plus"."""
+    n = name.lower().replace(" ", "").replace("-", "")
+    return "orangepi5plus" if ("orangepi5plus" in n or "opi5plus" in n) else None
 
 
 def load_windows() -> tuple[np.ndarray, np.ndarray]:
