@@ -150,7 +150,10 @@ These change the paper's numbers.
   script (`scripts/device_energy.py`) was checked on a simulated capture with known answers: it recovered
   8.0 / 36.0 mJ and 250 mW idle to within 0.1%.
 
-- **C28. Energy is estimated, not measured (current route).**
+- **C28. Energy is estimated, not measured; the paper's hardware is the Orange Pi 5 Plus gateway (decided 2026-10-04).**
+  - **No microcontroller result:** the ESP32 is not measured, so the paper's "small enough for a
+    microcontroller" became "timed on one Cortex-A55 core of an edge gateway"; the on-sensor microcontroller
+    case moved to future work.
   - **Time per window is measured:** by the ESP32-S3's own clock (`device_timing.py`) and on the gateway
     (`bench_gateway.py`).
   - **Energy is time × a published power figure** (`configs/power_estimates.yaml`):

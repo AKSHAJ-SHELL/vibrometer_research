@@ -1,5 +1,10 @@
 # On-device timing and energy: ESP32 microcontroller (+ Orange Pi gateway)
 
+**Paper route (decided 2026-10-04): Orange Pi 5 Plus as the edge gateway — section B.** It times the pipeline in
+Python across all cores (sensors served) and the C++ port on one Cortex-A55 and one Cortex-A76 core, with energy
+estimated from a published board figure. The ESP32 (section A) and the Uno power meter are optional extras for
+future work (an on-sensor microcontroller); nothing in the paper depends on them.
+
 **Current route: no power meter.** Time per window is **measured**: on the ESP32 by its own clock, and on
 the Orange Pi by the gateway benchmark. Energy is **estimated** as measured time × a published power figure
 (`configs/power_estimates.yaml`: the ESP32 datasheet v5.3 Table 4-2 or the ESP32-S3 datasheet v2.2 Table 5-9; a measured Orange Pi 5 Plus review).
